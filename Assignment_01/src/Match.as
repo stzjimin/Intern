@@ -25,7 +25,7 @@ package
 			groups.Sort(user);			//생성된 user의 Player객체를 토대로 Player객체들을 정렬
 		}
 		
-		public function PrintPlayer(player:Player):void
+		public function PrintPlayer(player:Player):void		//해당 Player객체의 내용들을 출력하기위한 메소드
 		{
 			output_string.push("User(" + "id: " + player.p_num + ", name: " + player.p_name + ", score: " + player.p_score + ", win: " + player.p_win_count + ", lose: " + player.p_lose_count + ")");
 			trace("User(" + "id: " + player.p_num + ", name: " + player.p_name + ", score: " + player.p_score + ", win: " + player.p_win_count + ", lose: " + player.p_lose_count + ")"); 
