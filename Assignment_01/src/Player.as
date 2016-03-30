@@ -19,8 +19,6 @@ package
 			_p_score = input_score;
 			_p_win_count = input_win_count;
 			_p_lose_count = input_lose_count;
-			
-		//	trace(input_name);
 		}
 
 		public function get p_score_interval():int

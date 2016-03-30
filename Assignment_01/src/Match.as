@@ -13,7 +13,7 @@ package
 			groups = i_o_manager.GetDataGroup();
 		}
 		
-		public function SetUser(input_score:int):void
+		public function SetUser(input_score:int):void			//사용자의 점수를 받아서 해당 사용자의 Player객체를 생성하기 위한 메소드
 		{
 			user = new Player(0, "user", input_score, 0, 0);
 			
@@ -22,7 +22,7 @@ package
 				group_num = 10;
 			user.p_group_num = group_num;
 			
-			groups.Sort(user);
+			groups.Sort(user);			//생성된 user의 Player객체를 토대로 Player객체들을 정렬
 		}
 		
 		public function PrintPlayer(player:Player):void
@@ -57,8 +57,8 @@ package
 					}
 				}
 				
-				output_string.push("Matched Group = " + matched_group_num);
-				trace("Matched Group = " + matched_group_num);
+				output_string.push("Matched Group = " + (matched_group_num+1));
+				trace("Matched Group = " + (matched_group_num+1));
 				var matched_group:Vector.<Player> = groups.GetGroup(matched_group_num);
 				if(matched_group.length == 0)
 				{
