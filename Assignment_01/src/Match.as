@@ -5,7 +5,7 @@ package
 		private var groups:Group;
 		private var i_o_manager:I_O_Manager;
 		private var user:Player;
-		private var output_string:String = new String();
+		private var output_string:Array = new Array();
 		
 		public function Match()
 		{
@@ -27,7 +27,7 @@ package
 		
 		public function PrintPlayer(player:Player):void
 		{
-			output_string = output_string + "User(" + "id: " + player.p_num + ", name: " + player.p_name + ", score: " + player.p_score + ", win: " + player.p_win_count + ", lose: " + player.p_lose_count + ")" + "\n";
+			output_string.push("User(" + "id: " + player.p_num + ", name: " + player.p_name + ", score: " + player.p_score + ", win: " + player.p_win_count + ", lose: " + player.p_lose_count + ")" + "\n");
 			trace("User(" + "id: " + player.p_num + ", name: " + player.p_name + ", score: " + player.p_score + ", win: " + player.p_win_count + ", lose: " + player.p_lose_count + ")"); 
 		}
 		
@@ -57,12 +57,12 @@ package
 					}
 				}
 				
-				output_string = output_string + "Matched Group = " + matched_group_num + "\n";
+				output_string.push("Matched Group = " + matched_group_num + "\n");
 				trace("Matched Group = " + matched_group_num);
 				var matched_group:Vector.<Player> = groups.GetGroup(matched_group_num);
 				if(matched_group.length == 0)
 				{
-					output_string = output_string + "This Group is empty!!" + "\n";
+					output_string.push("This Group is empty!!" + "\n");
 					trace("This Group is empty!!");
 				}
 				else
@@ -79,7 +79,7 @@ package
 			}
 		}
 		
-		public function GetOutputString():String
+		public function GetOutputString():Array
 		{
 			return output_string;
 		}
