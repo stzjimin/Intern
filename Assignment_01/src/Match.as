@@ -5,6 +5,7 @@ package
 		private var groups:Group;
 		private var i_o_manager:I_O_Manager;
 		private var user:Player;
+		private var output_string:String = new String();
 		
 		public function Match()
 		{
@@ -22,22 +23,11 @@ package
 			user.p_group_num = group_num;
 			
 			groups.Sort(user);
-			/*
-			for(var i:int = 0; i < 11; i++)
-			{
-				var group:Vector.<Player> = groups.GetGroup(i);
-				for(var j:int = 0; j < group.length; j++)
-				{
-				//	trace(group[j].p_name);
-				}
-			//	trace(i);
-			//	trace();
-			}
-			*/
 		}
 		
 		public function PrintPlayer(player:Player):void
 		{
+			output_string = output_string + "User(" + "id: " + player.p_num + ", name: " + player.p_name + ", score: " + player.p_score + ", win: " + player.p_win_count + ", lose: " + player.p_lose_count + ")" + "\n";
 			trace("User(" + "id: " + player.p_num + ", name: " + player.p_name + ", score: " + player.p_score + ", win: " + player.p_win_count + ", lose: " + player.p_lose_count + ")"); 
 		}
 		
@@ -46,10 +36,8 @@ package
 			var count:int = 0;
 			var group_flag:int = 0;
 			var matched_group_num:int = user.p_group_num;
-		//	trace("group count = " + groups.group_count);
 			while(!((count >= 5) || (count >= groups.group_count)))
 			{
-			//	trace(count);
 				if((group_flag % 2) == 1)
 				{
 					matched_group_num = user.p_group_num + ((group_flag + 1) / 2);
@@ -69,10 +57,12 @@ package
 					}
 				}
 				
+				output_string = output_string + "Matched Group = " + matched_group_num + "\n";
 				trace("Matched Group = " + matched_group_num);
 				var matched_group:Vector.<Player> = groups.GetGroup(matched_group_num);
 				if(matched_group.length == 0)
 				{
+					output_string = output_string + "This Group is empty!!" + "\n";
 					trace("This Group is empty!!");
 				}
 				else
@@ -81,14 +71,17 @@ package
 					{
 						PrintPlayer(matched_group[i]);
 						count++;
-				//		trace("count = " + count);
 						if(count >= 5)
 							break;
 					}
 				}
-			//	trace("last count = " + count);
 				group_flag++;
 			}
+		}
+		
+		public function GetOutputString():String
+		{
+			return output_string;
 		}
 	}
 }

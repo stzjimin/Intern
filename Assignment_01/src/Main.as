@@ -31,6 +31,10 @@ package
 			
 			match.SetUser(user_input_score);
 			match.Display();
+			
+			text.height = 300;
+			text.width = 1000;
+			text.text = match.GetOutputString();
 		}
 		
 		public function get text_field():TextField
