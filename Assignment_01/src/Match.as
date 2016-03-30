@@ -27,7 +27,7 @@ package
 		
 		public function PrintPlayer(player:Player):void
 		{
-			output_string.push("User(" + "id: " + player.p_num + ", name: " + player.p_name + ", score: " + player.p_score + ", win: " + player.p_win_count + ", lose: " + player.p_lose_count + ")" + "\n");
+			output_string.push("User(" + "id: " + player.p_num + ", name: " + player.p_name + ", score: " + player.p_score + ", win: " + player.p_win_count + ", lose: " + player.p_lose_count + ")");
 			trace("User(" + "id: " + player.p_num + ", name: " + player.p_name + ", score: " + player.p_score + ", win: " + player.p_win_count + ", lose: " + player.p_lose_count + ")"); 
 		}
 		
@@ -57,7 +57,7 @@ package
 					}
 				}
 				
-				output_string.push("Matched Group = " + matched_group_num + "\n");
+				output_string.push("Matched Group = " + matched_group_num);
 				trace("Matched Group = " + matched_group_num);
 				var matched_group:Vector.<Player> = groups.GetGroup(matched_group_num);
 				if(matched_group.length == 0)
@@ -76,6 +76,7 @@ package
 					}
 				}
 				group_flag++;
+				output_string.push("\n");
 			}
 		}
 		
