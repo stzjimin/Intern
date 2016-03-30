@@ -62,7 +62,7 @@ package
 				var matched_group:Vector.<Player> = groups.GetGroup(matched_group_num);
 				if(matched_group.length == 0)
 				{
-					output_string.push("This Group is empty!!" + "\n");
+					output_string.push("This Group is empty!!");
 					trace("This Group is empty!!");
 				}
 				else

@@ -31,12 +31,13 @@ package
 			match.Display();						//정렬된 Player객체들을 규칙에 맞게 Array변수에 저장함
 			
 			text.height = 300;
-			text.width = 1000;
+			text.width = 500;
 			var string_array:Array = match.GetOutputString();	//저장된 Array변수를 가져옴(이 때 Array변수는 출력되어질 문자열들을 담고있음
 			var output_text:String = new String();				//TextField에 보여질 문자열
 			while(string_array.length != 0)
 				output_text = output_text + string_array.shift() + "\n";	//문자열에 string_array의 문자열들을 앞에서 부터 꺼내어 차례로 담는다.
 			text.text = output_text;		//TextField의 text에 출력할 문자열을 넣어줌
+			text.mouseWheelEnabled = true;
 		}
 		
 		public function get text_field():TextField
