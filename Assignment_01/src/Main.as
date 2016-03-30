@@ -19,8 +19,8 @@ package
 		{	
 			var match:Match = new Match();
 			
-//			data_file = File.documentsDirectory.resolvePath("C:\\Users\\user\\Adobe Flash Builder 4.7\\Assignment_01\\user_data.txt");
-			data_file = File.documentsDirectory.resolvePath("C:\\Users\\user\\Adobe Flash Builder 4.7\\Assignment_01\\user_data.txt");
+			data_file = File.applicationDirectory;
+			data_file = data_file.resolvePath("user_data.txt");
 			data_stream = new FileStream();
 			data_stream.open(data_file, FileMode.READ);
 			data_stream.readBytes(bytes, data_stream.position, data_stream.bytesAvailable);

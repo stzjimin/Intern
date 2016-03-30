@@ -14,7 +14,8 @@ package
 		
 		public function I_O_Manager()
 		{
-			data_file = File.documentsDirectory.resolvePath("C:\\Users\\user\\Adobe Flash Builder 4.7\\Assignment_01\\data.txt");
+			data_file = File.applicationDirectory;
+			data_file = data_file.resolvePath("data.txt");
 			data_stream = new FileStream();
 			data_stream.open(data_file, FileMode.READ);
 		//	data_stream.position = 0;
