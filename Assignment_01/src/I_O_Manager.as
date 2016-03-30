@@ -29,7 +29,7 @@ package
 				var string_temp:String;
 				string_temp = params.pop();
 				var data_array:Array = string_temp.split(",");
-				if(string_temp.length > 1)
+				if(data_array.length > 1)
 				{	
 					var user_lose_count:String = data_array.pop() as String;
 					var user_win_count:String = data_array.pop() as String;
