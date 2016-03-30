@@ -28,10 +28,10 @@ package
 			{
 				var string_temp:String;
 				string_temp = params.pop();
-				var data_array:Array = string_temp.split(",");
-				if(data_array.length > 1)
+				var data_array:Array = string_temp.split(",");		//개행문자열로 나눠진 한줄의 문자열(Player한명의 정보)를 다시 ','를 기준으로 분할 
+				if(data_array.length > 1)		//이 때 분할된 문자가 1개 이하인경우는 ','가 없는 경우이므로 올바른 정보가 아니므로 제외
 				{	
-					var user_lose_count:String = data_array.pop() as String;
+					var user_lose_count:String = data_array.pop() as String;		//분할된 문자열들을 pop을 이용하여 차례로 가져옴
 					var user_win_count:String = data_array.pop() as String;
 					var user_score:String = data_array.pop() as String;
 					var user_name:String = data_array.pop() as String;
@@ -40,11 +40,10 @@ package
 					var player:Player = new Player(int(user_num), user_name, int(user_score), int(user_win_count), int(user_lose_count));
 					groups.Input_player(player);
 				}
-				
 			}
 		}
 		
-		public function GetDataGroup():Group
+		public function GetDataGroup():Group	//데이터파일을 토대로 생성된 Player그룹을 반환해주기 위한 메소드
 		{
 			return groups;
 		}
