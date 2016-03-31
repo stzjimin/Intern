@@ -19,28 +19,28 @@ package
 			captureText();
 		}
 		
-		public function captureText():void 
+		public function captureText():void		//사용자 입력을 받기위한 메소드
 		{ 
-			myTextBox.type = TextFieldType.INPUT; 
-			myTextBox.background = true; 
-			addChild(myTextBox); 
-			myTextBox.text = "Type Your Score"; 
+			myTextBox.type = TextFieldType.INPUT;
+			myTextBox.background = true;
+			addChild(myTextBox);
+			myTextBox.text = "Type Your Score";
 			myTextBox.addEventListener(KeyboardEvent.KEY_DOWN, textInputCapture);
 			myTextBox.height = 20;
 			myTextBox.border = true;
 		} 
 		
-		public function textInputCapture(event:KeyboardEvent):void 
+		public function textInputCapture(event:KeyboardEvent):void		//사용자의 입력이 생길경우 호출되는 메소드
 		{
-			if(event.charCode == 13)
+			if(event.charCode == 13)			//charCode가 13인 것은 엔터키에 해당함
 			{
-				var str:String = myTextBox.text; 
+				var str:String = myTextBox.text;
 				main.user_score = int(str);
 				createOutputBox(str);
 			}
 		} 
 		
-		public function createOutputBox(str:String):void 
+		public function createOutputBox(str:String):void 		//사용자의 입력에 따라 Player리스트를 출력해줌
 		{
 			var text_field:TextField = main.text_field;
 			text_field.y = 50;
