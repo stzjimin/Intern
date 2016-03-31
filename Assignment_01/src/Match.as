@@ -59,7 +59,7 @@ package
 						continue;
 					}
 				}
-				
+
 				output_string.push(">Matched Group = " + (matched_group_num+1));
 				output_string.push("\n");
 				trace(">Matched Group = " + (matched_group_num+1));
