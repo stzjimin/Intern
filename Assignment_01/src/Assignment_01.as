@@ -29,7 +29,7 @@ package
 			myTextBox.addEventListener(KeyboardEvent.KEY_DOWN, textInputCapture);
 			myTextBox.height = 20;
 			myTextBox.border = true;
-		} 
+		}
 		
 		public function textInputCapture(event:KeyboardEvent):void		//사용자의 입력이 생길경우 호출되는 메소드
 		{
