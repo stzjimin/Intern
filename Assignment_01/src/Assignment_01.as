@@ -7,7 +7,7 @@ package
 	
 	import Main;
 	
-	[SWF(width="640", height="480", backgroundColor="#FFFFFF", frameRate="30")]
+	[SWF(width="640", height="480", backgroundColor="#FFFFF0", frameRate="30")]
 	public class Assignment_01 extends Sprite
 	{
 		private var myTextBox:TextField = new TextField(); 
