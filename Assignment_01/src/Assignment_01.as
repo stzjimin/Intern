@@ -35,11 +35,8 @@ package
 			if(event.charCode == 13)			//charCode가 13인 것은 엔터키에 해당함
 			{
 				var str:String = myTextBox.text;
-				var str_array:Array = str.split(",");
-				str = new String();
-				while(str_array.length != 0)
-					str = str.concat(str_array.shift());
-				str_array = str.split(".");
+				var reg:RegExp = new RegExp(/,|\./);
+				var str_array:Array = str.split(reg);
 				str = new String();
 				while(str_array.length != 0)
 					str = str.concat(str_array.shift());
