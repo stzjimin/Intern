@@ -30,7 +30,7 @@ package
 			match.SetUser(_user_score);		//Match클래스의  SetUser메소드 호출로 사용자의 점수로 새로운 Player객체를 생성 및 해당 점수로 Player객체들을 정렬
 			match.Display();						//정렬된 Player객체들을 규칙에 맞게 Array변수에 저장함
 			
-			text.height = 300;
+			text.height = 500;
 			text.width = 500;
 			var string_array:Array = match.GetOutputString();	//저장된 Array변수를 가져옴(이 때 Array변수는 출력되어질 문자열들을 담고있음
 			var output_text:String = new String();				//TextField에 보여질 문자열
