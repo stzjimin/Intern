@@ -38,6 +38,7 @@ package
 			var count:int = 0;
 			var group_flag:int = 0;
 			var matched_group_num:int = user.p_group_num;
+			output_string.push("Your Score is " + user.p_score + "\n");
 			while(!((count >= 5) || (count >= groups.group_count)))
 			{
 				if((group_flag % 2) == 1)
@@ -60,11 +61,13 @@ package
 				}
 				
 				output_string.push("Matched Group = " + (matched_group_num+1));
+				output_string.push("\n");
 				trace("Matched Group = " + (matched_group_num+1));
 				var matched_group:Vector.<Player> = groups.GetGroup(matched_group_num);
 				if(matched_group.length == 0)
 				{
 					output_string.push("This Group is empty!!");
+					output_string.push("\n");
 					trace("This Group is empty!!");
 				}
 				else
@@ -72,6 +75,7 @@ package
 					for(var i:int = 0; i < matched_group.length; i++)
 					{
 						PrintPlayer(matched_group[i]);
+						output_string.push("\n");
 						count++;
 						if(count >= 5)
 							break;
