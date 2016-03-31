@@ -20,6 +20,8 @@ package
 			var group_num:int = (user.p_score - 1) / 100000;
 			if(group_num > 10)
 				group_num = 10;
+			else if(group_num < 0)
+				group_num = 0;
 			user.p_group_num = group_num;
 			
 			groups.Sort(user);			//생성된 user의 Player객체를 토대로 Player객체들을 정렬
