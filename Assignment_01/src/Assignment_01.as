@@ -1,9 +1,9 @@
 package
 {
 	import flash.display.Sprite;
+	import flash.events.KeyboardEvent;
 	import flash.text.TextField;
 	import flash.text.TextFieldType;
-	import flash.events.*;
 	
 	import Main;
 	
@@ -35,6 +35,8 @@ package
 			if(event.charCode == 13)			//charCode가 13인 것은 엔터키에 해당함
 			{
 				var str:String = myTextBox.text;
+				str = str.replace(",","");
+				str = str.replace(".","");
 				main.user_score = int(str);
 				createOutputBox(str);
 			}
