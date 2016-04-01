@@ -1,7 +1,5 @@
 package
 {	
-	import flash.utils.ByteArray;
-
 	public class Group
 	{
 		private var groups:Array = new Array();		//Vector.<Player>배열을 담기위한 배열인 groups
@@ -30,20 +28,21 @@ package
 		
 		public function Sort(user:Player):void
 		{	//Player객체들을 정렬하기위한 메소드(이 때 기준이 될 Plyaer객체를 받고 해당  Player객체의 점수차가 적은 순서대로 정렬한다)
-			var i:int;
-			var j:int;
-			for(i = 0; i < 11; i++)
-			{
-				var group_temp:Vector.<Player> = groups[i];
-				for(j = 0; j < group_temp.length; j++)
-					CheckInterval(user, group_temp[j]);
-				groups[i] = group_temp;
-			}
 			
-			for(i = 0; i < 11; i++)
+			for(var i:int = 0; i < 11; i++)
 			{
 				var group_sort:Vector.<Player> = groups[i];
 				groups[i] = group_sort.sort(OrderAbs);		//Array에서 지원하는 sort메소드를 이용하여 정렬(이 때 인자로 메소드를 넘겨주게 되면 해당 메소드를 실행,비교 하여 정렬을 함)
+			}
+			
+			function OrderAbs(player1:Player, player2:Player):int		//p_score_interval(user와의 점수차이)를 토대로 비교하기위한 메소드
+			{
+				if(Math.abs(player1.p_score - user.p_score) < Math.abs(player2.p_score - user.p_score))
+					return -1;
+				else if(Math.abs(player1.p_score - user.p_score) > Math.abs(player2.p_score - user.p_score))
+					return 1;
+				else
+					return 0;
 			}
 		}
 		
@@ -86,20 +85,12 @@ package
 			groups[group_num][group_length] = player;
 			_player_count++;
 		}
-		
+
+		/*
 		private function CheckInterval(user:Player, target:Player):void		//사용자(user)Player객체와 목표가되는 Player객체의 점수차이를 구하여 저장하기 위한 메소드
 		{
 			target.p_score_interval = Math.abs(target.p_score - user.p_score);
 		}
-		
-		private function OrderAbs(player1:Player, player2:Player):int		//p_score_interval(user와의 점수차이)를 토대로 비교하기위한 메소드
-		{
-			if(player1.p_score_interval < player2.p_score_interval)
-				return -1;
-			else if(player1.p_score_interval > player2.p_score_interval)
-				return 1;
-			else
-				return 0;
-		}
+		*/
 	}
 }

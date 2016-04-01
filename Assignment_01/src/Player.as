@@ -9,7 +9,6 @@ package
 		private var _p_lose_count : int;
 		
 		private var _p_group_num : int;
-		private var _p_score_interval : int;
 		
 		//생성자
 		public function Player(input_num:int, input_name:String, input_score:int,
@@ -23,16 +22,6 @@ package
 		}
 
 		//Getter & Setter
-		public function get p_score_interval():int
-		{
-			return _p_score_interval;
-		}
-
-		public function set p_score_interval(value:int):void
-		{
-			_p_score_interval = value;
-		}
-
 		public function get p_group_num():int
 		{
 			return _p_group_num;
