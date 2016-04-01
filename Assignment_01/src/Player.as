@@ -10,7 +10,15 @@ package
 		
 		private var _p_group_num : int;
 		
-		//생성자
+		/**
+		 *Player클래스의 생성자 
+		 * @param input_num
+		 * @param input_name
+		 * @param input_score
+		 * @param input_win_count
+		 * @param input_lose_count
+		 * 초기생성 시 기본 정보인 번호,이름,점수,승리횟수,패배횟수를 받아옴
+		 */		
 		public function Player(input_num:int, input_name:String, input_score:int,
 							   input_win_count:int, input_lose_count:int)
 		{
@@ -21,6 +29,11 @@ package
 			_p_lose_count = input_lose_count;
 		}
 		
+		/**
+		 *Plyaer객체가 가지고있는 정보를 출력하기위한 함수 
+		 * @return 플레이어가 가지고있는 정보를 정해진 규칙대로 출력
+		 * 
+		 */		
 		public function PrintPlayer():String		//해당 Player객체의 내용들을 출력하기위한 메소드
 		{
 			trace(" User(" + "id: " + _p_num + ", name: " + _p_name + ", score: " + _p_score + ", win: " + _p_win_count + ", lose: " + _p_lose_count + ")");
