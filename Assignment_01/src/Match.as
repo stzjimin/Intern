@@ -19,8 +19,8 @@ package
 			user = new Player(0, "user", input_score, 0, 0);
 			
 			var group_num:int = (user.p_score - 1) / 100000;
-			if(group_num > 10)
-				group_num = 10;
+			if(group_num > groups.group_count)
+				group_num = groups.group_count;
 			else if(group_num < 0)
 				group_num = 0;
 			user.p_group_num = group_num;
@@ -39,7 +39,7 @@ package
 				if((group_flag % 2) == 1)					//group_flag에 따라 다음 탐색그룹을 지정(이 때 group_flag가 홀수이면 위쪽그룹을 탐색, 짝수이면 아래쪽 그룹을 탐색)
 				{
 					matched_group_num = user.p_group_num + ((group_flag + 1) / 2);
-					if(matched_group_num > 10)			//만약 다음 탐색하려는 그룹의 번호가 10보다 큰 경우(11그룹을 넘어갈경우)는 방향을 다시 아래로 전환
+					if(matched_group_num > groups.group_count)			//만약 다음 탐색하려는 그룹의 번호가 10보다 큰 경우(11그룹을 넘어갈경우)는 방향을 다시 아래로 전환
 					{
 						group_flag++;
 						continue;

@@ -4,18 +4,23 @@ package
 	{
 		private var groups:Array = new Array();		//Vector.<Player>배열을 담기위한 배열인 groups
 		private var _player_count:int;		//Player의 총 개수
+		private const _group_count:int = 10;
 		
-		//생성자
 		public function Group()
 		{
 			_player_count = 0;
-			for(var i:int = 0; i < 11; i++)
+			for(var i:int = 0; i < _group_count+1; i++)
 			{
 				var group:Vector.<Player> = new Vector.<Player>();	//Player객체를 담기위한 Vector배열인 group
 				groups.push(group);		//Array배열 groups에 Vector배열 group을 추가
 			}
 		}
 		
+		public function get group_count():int
+		{
+			return _group_count;
+		}
+
 		public function get player_count():int
 		{
 			return _player_count;
@@ -29,7 +34,7 @@ package
 		public function Sort(user:Player):void
 		{	//Player객체들을 정렬하기위한 메소드(이 때 기준이 될 Plyaer객체를 받고 해당  Player객체의 점수차가 적은 순서대로 정렬한다)
 			
-			for(var i:int = 0; i < 11; i++)
+			for(var i:int = 0; i < _group_count+1; i++)
 			{
 				var group_sort:Vector.<Player> = groups[i];
 				groups[i] = group_sort.sort(OrderAbs);		//Array에서 지원하는 sort메소드를 이용하여 정렬(이 때 인자로 메소드를 넘겨주게 되면 해당 메소드를 실행,비교 하여 정렬을 함)
@@ -78,8 +83,8 @@ package
 		private function Input_player(player:Player):void
 		{
 			var group_num:int = (player.p_score - 1) / 100000;		//player가 속하는 그룹은 player점수에 따라 정해지므로 해당 규칙으로 플레이어 그룹을 설정
-			if(group_num > 10)
-				group_num = 10;
+			if(group_num > _group_count)
+				group_num = _group_count;
 			player.p_group_num = group_num;
 			var group_length:int = groups[group_num].length;
 			groups[group_num][group_length] = player;
