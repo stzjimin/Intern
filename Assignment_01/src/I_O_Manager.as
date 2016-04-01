@@ -15,7 +15,7 @@ package
 		public function I_O_Manager()
 		{
 			data_file = File.applicationDirectory;			//Player데이터가 저장되어있는 데이터파일을 읽어들이기위한 변수
-			data_file = data_file.resolvePath("data.txt");
+			data_file = data_file.resolvePath("data1.txt");
 			data_stream = new FileStream();
 			data_stream.open(data_file, FileMode.READ);
 			data_stream.readBytes(bytes, data_stream.position, data_stream.bytesAvailable);	//읽어들인 문자열을 bytes에 byte형태로 저장
