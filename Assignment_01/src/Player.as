@@ -20,6 +20,12 @@ package
 			_p_win_count = input_win_count;
 			_p_lose_count = input_lose_count;
 		}
+		
+		public function PrintPlayer():String		//해당 Player객체의 내용들을 출력하기위한 메소드
+		{
+			trace(" User(" + "id: " + _p_num + ", name: " + _p_name + ", score: " + _p_score + ", win: " + _p_win_count + ", lose: " + _p_lose_count + ")");
+			return " User(" + "id: " + _p_num + ", name: " + _p_name + ", score: " + _p_score + ", win: " + _p_win_count + ", lose: " + _p_lose_count + ")";
+		}
 
 		//Getter & Setter
 		public function get p_group_num():int
