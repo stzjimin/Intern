@@ -47,16 +47,16 @@ package
 			}
 		}
 		
-		public function SetGroup(bytes:ByteArray):void
+		public function SetGroup(data:Array):void
 		{
-			var byte_string:String = bytes.toString();		//byte형태로 저장되어있는 문자열들을 toString을 이용해서 문자열로 변환
-			var params:Array = byte_string.split("\n");		//해당 문자열을 개행문자("\n")를 기준으로 분할(Player별로 문자열을 분할)
+		//	var byte_string:String = bytes.toString();		//byte형태로 저장되어있는 문자열들을 toString을 이용해서 문자열로 변환
+		//	var params:Array = byte_string.split("\n");		//해당 문자열을 개행문자("\n")를 기준으로 분할(Player별로 문자열을 분할)
 			
 			var reg:RegExp = new RegExp(/\D/g);
-			while(params.length != 0)
+			while(data.length != 0)
 			{
 				var string_temp:String;
-				string_temp = params.pop();
+				string_temp = data.pop();
 				var data_array:Array = string_temp.split(",");		//개행문자열로 나눠진 한줄의 문자열(Player한명의 정보)를 다시 ','를 기준으로 분할 
 				if(data_array.length > 1)		//이 때 분할된 문자가 1개 이하인경우는 ','가 없는 경우이므로 올바른 정보가 아니므로 제외
 				{	
