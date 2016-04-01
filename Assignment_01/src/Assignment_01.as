@@ -36,7 +36,7 @@ package
 			if(event.charCode == 13)			//charCode가 13인 것은 엔터키에 해당함
 			{
 				var str:String = input_text_field.text;
-				var reg:RegExp = new RegExp(/\D/g);
+				var reg:RegExp = new RegExp(/,|\./g);
 				str = str.replace(reg,"");
 				main.user_score = int(str);
 				main.SetGroup();

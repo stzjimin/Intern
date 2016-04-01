@@ -27,7 +27,7 @@ package
 		
 		public function Input_player(player:Player):void
 		{
-			var group_num:int = (player.p_score - 1) / 100000;
+			var group_num:int = (player.p_score - 1) / 100000;		//player가 속하는 그룹은 player점수에 따라 정해지므로 해당 규칙으로 플레이어 그룹을 설정
 			if(group_num > 10)
 				group_num = 10;
 			player.p_group_num = group_num;

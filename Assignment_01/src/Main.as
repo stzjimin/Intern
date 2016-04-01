@@ -2,7 +2,6 @@ package
 {
 	import flash.filesystem.File;
 	import flash.filesystem.FileStream;
-	import flash.text.TextField;
 	import flash.utils.ByteArray;
 
 	public class Main		//최종적으로 출력될 텍스트필드를 생성할 클래스
