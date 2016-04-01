@@ -1,7 +1,6 @@
 package
 {
 	import flash.display.Sprite;
-	import flash.events.Event;
 	import flash.events.KeyboardEvent;
 	import flash.text.TextField;
 	import flash.text.TextFieldType;
@@ -57,7 +56,6 @@ package
 				main.SetGroup();
 				createOutputBox();
 			}
-			input_text_field.removeEventListener(KeyboardEvent.KEY_UP,textInputCapture);	//이벤트 리스너 지우는 방식이 이게 맞는지 모르겠습니다.
 		} 
 		
 		/**
@@ -72,6 +70,6 @@ package
 			output_text_field.y = 40;
 			output_text_field.mouseWheelEnabled = true;
 			addChild(output_text_field);
-		} 
+		}
 	}
 }
