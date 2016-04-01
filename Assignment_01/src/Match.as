@@ -39,7 +39,7 @@ package
 			var group_flag:int = 0;
 			var matched_group_num:int = user.p_group_num;
 			output_string.push("Your Score is " + user.p_score + "\n");
-			while(!((count >= 5) || (count >= groups.group_count)))
+			while(!((count >= 5) || (count >= groups.player_count)))
 			{
 				if((group_flag % 2) == 1)
 				{

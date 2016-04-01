@@ -3,21 +3,21 @@ package
 	public class Group
 	{
 		private var groups:Array = new Array();		//Vector.<Player>배열을 담기위한 배열인 groups
-		private var _group_count:int;		//Player의 총 개수
+		private var _player_count:int;		//Player의 총 개수
 		
 		public function Group()
 		{
-			_group_count = 0;
+			_player_count = 0;
 			for(var i:int = 0; i < 11; i++)
 			{
 				var group:Vector.<Player> = new Vector.<Player>();	//Player객체를 담기위한 Vector배열인 group
-				groups.push(group);		//배열 groups에 배열 group을 추가
+				groups.push(group);		//Array배열 groups에 Vector배열 group을 추가
 			}
 		}
 		
-		public function get group_count():int
+		public function get player_count():int
 		{
-			return _group_count;
+			return _player_count;
 		}
 
 		public function GetGroup(group_num:int):Vector.<Player>
@@ -33,7 +33,7 @@ package
 			player.p_group_num = group_num;
 			var group_length:int = groups[group_num].length;
 			groups[group_num][group_length] = player;
-			_group_count++;
+			_player_count++;
 		}
 		
 		public function Sort(user:Player):void
