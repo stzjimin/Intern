@@ -49,7 +49,7 @@ package
 			output_text_field.text = main.output_string;
 			output_text_field.height = 430;
 			output_text_field.width = 500;
-			output_text_field.y = 50;
+			output_text_field.y = 40;
 			output_text_field.mouseWheelEnabled = true;
 			addChild(output_text_field);
 		} 

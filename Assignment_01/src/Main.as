@@ -25,7 +25,7 @@ package
 		public function SetGroup():void
 		{
 			match.SetUser(_user_score);		//Match클래스의  SetUser메소드 호출로 사용자의 점수로 새로운 Player객체를 생성 및 해당 점수로 Player객체들을 정렬
-			match.Display();						//정렬된 Player객체들을 규칙에 맞게 Array변수에 저장함	
+			match.SetDisplay();						//정렬된 Player객체들을 규칙에 맞게 Array변수에 저장함	
 		}
 
 		public function get output_string():String

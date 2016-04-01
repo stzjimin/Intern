@@ -13,7 +13,7 @@ package
 			groups = i_o_manager.GetDataGroup();
 		}
 		
-		public function SetUser(input_score:int):void			//사용자의 점수를 받아서 해당 사용자의 Player객체를 생성하기 위한 메소드
+		public function SetUser(input_score:int):void			//사용자의 점수를 받게되면 해당 사용자의 Player객체를 생성하기 위한 메소드
 		{
 			user = new Player(0, "user", input_score, 0, 0);
 			
@@ -27,33 +27,33 @@ package
 			groups.Sort(user);			//생성된 user의 Player객체를 토대로 Player객체들을 정렬
 		}
 		
-		public function PrintPlayer(player:Player):void		//해당 Player객체의 내용들을 출력하기위한 메소드
+		public function PrintPlayer(player:Player):String		//해당 Player객체의 내용들을 출력하기위한 메소드
 		{
-			output_string.push(" User(" + "id: " + player.p_num + ", name: " + player.p_name + ", score: " + player.p_score + ", win: " + player.p_win_count + ", lose: " + player.p_lose_count + ")");
-			trace(" User(" + "id: " + player.p_num + ", name: " + player.p_name + ", score: " + player.p_score + ", win: " + player.p_win_count + ", lose: " + player.p_lose_count + ")"); 
+			trace(" User(" + "id: " + player.p_num + ", name: " + player.p_name + ", score: " + player.p_score + ", win: " + player.p_win_count + ", lose: " + player.p_lose_count + ")");
+			return " User(" + "id: " + player.p_num + ", name: " + player.p_name + ", score: " + player.p_score + ", win: " + player.p_win_count + ", lose: " + player.p_lose_count + ")";
 		}
 		
-		public function Display():void
+		public function SetDisplay():void
 		{
-			var count:int = 0;
-			var group_flag:int = 0;
-			var matched_group_num:int = user.p_group_num;
+			var count:int = 0;				//출력된 player숫자를 저장하기위한 변수
+			var group_flag:int = 0;			//다음 탐색그룹을 정할 때 사용되어질 변수
+			var matched_group_num:int = user.p_group_num;		//다음탐색될 그룹번호(초기에는 사용자가 속한 그룹)
 			output_string.push("Your Score is " + user.p_score + "\n");
-			while(!((count >= 5) || (count >= groups.player_count)))
+			while(!((count >= 5) || (count >= groups.player_count)))		//출력된 player숫자가 5명을 넘어가지 않거나, 데이터에 있는 player의 총 개수를 넘어가지 않는 다면 반복
 			{
-				if((group_flag % 2) == 1)
+				if((group_flag % 2) == 1)					//group_flag에 따라 다음 탐색그룹을 지정(이 때 group_flag가 홀수이면 위쪽그룹을 탐색, 짝수이면 아래쪽 그룹을 탐색)
 				{
 					matched_group_num = user.p_group_num + ((group_flag + 1) / 2);
-					if(matched_group_num > 10)
+					if(matched_group_num > 10)			//만약 다음 탐색하려는 그룹의 번호가 10보다 큰 경우(11그룹을 넘어갈경우)는 방향을 다시 아래로 전환
 					{
 						group_flag++;
 						continue;
 					}
 				}
-				else
+				else					//group_flag가 0인경우(사용자가 속한 그룹을 탐색하는 경우)도 여기에 속함
 				{
 					matched_group_num = user.p_group_num - (group_flag / 2);
-					if(matched_group_num < 0)
+					if(matched_group_num < 0)			//만약 다음 탐색하려는 그룹의 번호가 0보다 작은 경우(1그룹을 넘어갈경우)는 방향을 다시 위로 전환
 					{
 						group_flag++;
 						continue;
@@ -74,7 +74,7 @@ package
 				{
 					for(var i:int = 0; i < matched_group.length; i++)
 					{
-						PrintPlayer(matched_group[i]);
+						output_string.push(PrintPlayer(matched_group[i]));
 						output_string.push("\n");
 						count++;
 						if(count >= 5)
