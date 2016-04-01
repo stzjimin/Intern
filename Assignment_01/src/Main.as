@@ -20,7 +20,7 @@ package
 		 * @param value = 유저가 입력한 데이터
 		 * 
 		 */		
-		public function set user_score(value:int):void
+		public function set userScore(value:int):void
 		{
 			_userScore = value;
 		}

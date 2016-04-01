@@ -30,8 +30,8 @@ package
 			_user = new Player(0, "user", inputScore, 0, 0);
 			
 			var groupNum:int = (_user.score - 1) / 100000;
-			if(groupNum > _groups.group_count)
-				groupNum = _groups.group_count;
+			if(groupNum > _groups.groupCount)
+				groupNum = _groups.groupCount;
 			else if(groupNum < 0)
 				groupNum = 0;
 			_user.groupNum = groupNum;
@@ -49,12 +49,12 @@ package
 			var groupFlag:int = 0;			//다음 탐색그룹을 정할 때 사용되어질 변수
 			var matchedGroupNum:int = _user.groupNum;		//다음탐색될 그룹번호(초기에는 사용자가 속한 그룹)
 			_outputString.push("Your Score is " + _user.score + "\n");
-			while(!((count >= maxOutCount) || (count >= _groups.player_count)))		//출력된 player숫자가 5명을 넘어가지 않거나, 데이터에 있는 Player의 총 개수를 넘어가지 않는 다면 반복
+			while(!((count >= maxOutCount) || (count >= _groups.playerCount)))		//출력된 player숫자가 5명을 넘어가지 않거나, 데이터에 있는 Player의 총 개수를 넘어가지 않는 다면 반복
 			{
 				if((groupFlag % 2) == 1)					//group_flag에 따라 다음 탐색그룹을 지정(이 때 group_flag가 홀수이면 위쪽그룹을 탐색, 짝수이면 아래쪽 그룹을 탐색)
 				{
 					matchedGroupNum = _user.groupNum + ((groupFlag + 1) / 2);
-					if(matchedGroupNum > _groups.group_count)			//만약 다음 탐색하려는 그룹의 번호가 10보다 큰 경우(11그룹을 넘어갈경우)는 방향을 다시 아래로 전환
+					if(matchedGroupNum > _groups.groupCount)			//만약 다음 탐색하려는 그룹의 번호가 10보다 큰 경우(11그룹을 넘어갈경우)는 방향을 다시 아래로 전환
 					{
 						groupFlag++;
 						continue;

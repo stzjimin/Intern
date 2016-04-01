@@ -4,7 +4,7 @@ package
 	{
 		private var _groups:Array = new Array();		//Vector.<Player>배열을 담기위한 배열인 groups
 		private var _playerCount:int;		//Player의 총 개수
-		private const groupCount:int = 10;
+		private const _groupCount:int = 10;
 		
 		/**
 		 *Group클래스의 생성자 
@@ -13,19 +13,19 @@ package
 		public function Group()
 		{
 			_playerCount = 0;
-			for(var i:int = 0; i < groupCount+1; i++)
+			for(var i:int = 0; i < _groupCount+1; i++)
 			{
 				var group:Vector.<Player> = new Vector.<Player>();	//Player객체를 담기위한 Vector배열인 group
 				_groups.push(group);		//Array배열 groups에 Vector배열 group을 추가
 			}
 		}
 		
-		public function get group_count():int
+		public function get groupCount():int
 		{
-			return groupCount;
+			return _groupCount;
 		}
 
-		public function get player_count():int
+		public function get playerCount():int
 		{
 			return _playerCount;
 		}
@@ -50,10 +50,10 @@ package
 		public function sortGroup(user:Player):void
 		{	//Player객체들을 정렬하기위한 메소드(이 때 기준이 될 Plyaer객체를 받고 해당  Player객체의 점수차가 적은 순서대로 정렬한다)
 			
-			for(var i:int = 0; i < groupCount+1; i++)
+			for(var i:int = 0; i < _groupCount+1; i++)
 			{
-				var group_sort:Vector.<Player> = _groups[i];
-				_groups[i] = group_sort.sort(orderAbs);		//Array에서 지원하는 sort메소드를 이용하여 정렬(이 때 인자로 메소드를 넘겨주게 되면 해당 메소드를 실행,비교 하여 정렬을 함)
+				var groupTemp:Vector.<Player> = _groups[i];
+				_groups[i] = groupTemp.sort(orderAbs);		//Array에서 지원하는 sort메소드를 이용하여 정렬(이 때 인자로 메소드를 넘겨주게 되면 해당 메소드를 실행,비교 하여 정렬을 함)
 			}
 			
 			function orderAbs(player1:Player, player2:Player):int		//p_score_interval(user와의 점수차이)를 토대로 비교하기위한 메소드
@@ -106,8 +106,8 @@ package
 		public function inputPlayer(player:Player):void
 		{
 			var groupNum:int = (player.score - 1) / 100000;		//player가 속하는 그룹은 player점수에 따라 정해지므로 해당 규칙으로 플레이어 그룹을 설정
-			if(groupNum > groupCount)
-				groupNum = groupCount;
+			if(groupNum > _groupCount)
+				groupNum = _groupCount;
 			player.groupNum = groupNum;
 			var groupLength:int = _groups[groupNum].length;
 			_groups[groupNum][groupLength] = player;

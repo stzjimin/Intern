@@ -52,7 +52,7 @@ package
 				var str:String = _inputTextField.text;
 				var reg:RegExp = new RegExp(/,|\./g);
 				str = str.replace(reg,"");
-				_main.user_score = int(str);
+				_main.userScore = int(str);
 				_main.setGroup();
 				createOutputBox();
 			//	input_text_field.removeEventListener(KeyboardEvent.KEY_DOWN, textInputCapture);
