@@ -5,6 +5,7 @@ package
 		private var groups:Array = new Array();		//Vector.<Player>배열을 담기위한 배열인 groups
 		private var _player_count:int;		//Player의 총 개수
 		
+		//생성자
 		public function Group()
 		{
 			_player_count = 0;
@@ -68,36 +69,6 @@ package
 				return 1;
 			else
 				return 0;
-		}
-		
-		private function Swap(player1:Player, player2:Player):void		//두 Player객체 내부의 데이터들을 바꿔주기위한 메소드
-		{
-			var String_temp:String;
-			var int_temp:int;
-			
-			int_temp = player1.p_num;
-			player1.p_num = player2.p_num;
-			player2.p_num = int_temp;
-			
-			String_temp = player1.p_name;
-			player1.p_name = player2.p_name;
-			player2.p_name = String_temp;
-			
-			int_temp = player1.p_score;
-			player1.p_score = player2.p_score;
-			player2.p_score = int_temp;
-			
-			int_temp = player1.p_win_count;
-			player1.p_win_count = player2.p_win_count;
-			player2.p_win_count = int_temp;
-			
-			int_temp = player1.p_lose_count;
-			player1.p_lose_count = player2.p_lose_count;
-			player2.p_lose_count = int_temp;
-			
-			int_temp = player1.p_group_num;
-			player1.p_group_num = player2.p_group_num;
-			player2.p_group_num = int_temp;
 		}
 	}
 }

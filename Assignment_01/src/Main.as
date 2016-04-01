@@ -1,14 +1,7 @@
 package
 {
-	import flash.filesystem.File;
-	import flash.filesystem.FileStream;
-	import flash.utils.ByteArray;
-
 	public class Main		//최종적으로 출력될 텍스트필드를 생성할 클래스
 	{
-		private var data_file:File;
-		private var data_stream:FileStream;
-		private var bytes:ByteArray = new ByteArray();
 		private var match:Match;
 		private var _user_score:int;
 		

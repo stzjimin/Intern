@@ -27,19 +27,13 @@ package
 			groups.Sort(user);			//생성된 user의 Player객체를 토대로 Player객체들을 정렬
 		}
 		
-		public function PrintPlayer(player:Player):String		//해당 Player객체의 내용들을 출력하기위한 메소드
-		{
-			trace(" User(" + "id: " + player.p_num + ", name: " + player.p_name + ", score: " + player.p_score + ", win: " + player.p_win_count + ", lose: " + player.p_lose_count + ")");
-			return " User(" + "id: " + player.p_num + ", name: " + player.p_name + ", score: " + player.p_score + ", win: " + player.p_win_count + ", lose: " + player.p_lose_count + ")";
-		}
-		
 		public function SetDisplay():void
 		{
-			var count:int = 0;				//출력된 player숫자를 저장하기위한 변수
+			var count:int = 0;				//출력된 Player숫자를 저장하기위한 변수
 			var group_flag:int = 0;			//다음 탐색그룹을 정할 때 사용되어질 변수
 			var matched_group_num:int = user.p_group_num;		//다음탐색될 그룹번호(초기에는 사용자가 속한 그룹)
 			output_string.push("Your Score is " + user.p_score + "\n");
-			while(!((count >= 5) || (count >= groups.player_count)))		//출력된 player숫자가 5명을 넘어가지 않거나, 데이터에 있는 player의 총 개수를 넘어가지 않는 다면 반복
+			while(!((count >= 5) || (count >= groups.player_count)))		//출력된 player숫자가 5명을 넘어가지 않거나, 데이터에 있는 Player의 총 개수를 넘어가지 않는 다면 반복
 			{
 				if((group_flag % 2) == 1)					//group_flag에 따라 다음 탐색그룹을 지정(이 때 group_flag가 홀수이면 위쪽그룹을 탐색, 짝수이면 아래쪽 그룹을 탐색)
 				{
@@ -72,12 +66,12 @@ package
 				}
 				else
 				{
-					for(var i:int = 0; i < matched_group.length; i++)
+					for(var i:int = 0; i < matched_group.length; i++)		//탐색하려는 그룹의 Player들을 출력
 					{
 						output_string.push(PrintPlayer(matched_group[i]));
 						output_string.push("\n");
 						count++;
-						if(count >= 5)
+						if(count >= 5)		//출력된 Player의 수가 5이상이 되면 탐색그룹에 Player가 남아있어도 즉시 출력을 중단.
 							break;
 					}
 				}
@@ -89,6 +83,12 @@ package
 		public function GetOutputString():Array
 		{
 			return output_string;
+		}
+
+		private function PrintPlayer(player:Player):String		//해당 Player객체의 내용들을 출력하기위한 메소드
+		{
+			trace(" User(" + "id: " + player.p_num + ", name: " + player.p_name + ", score: " + player.p_score + ", win: " + player.p_win_count + ", lose: " + player.p_lose_count + ")");
+			return " User(" + "id: " + player.p_num + ", name: " + player.p_name + ", score: " + player.p_score + ", win: " + player.p_win_count + ", lose: " + player.p_lose_count + ")";
 		}
 	}
 }
