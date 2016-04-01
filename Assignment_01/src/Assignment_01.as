@@ -55,6 +55,7 @@ package
 				main.user_score = int(str);
 				main.SetGroup();
 				createOutputBox();
+			//	input_text_field.removeEventListener(KeyboardEvent.KEY_DOWN, textInputCapture);
 			}
 		} 
 		
