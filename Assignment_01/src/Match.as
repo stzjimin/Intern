@@ -1,5 +1,7 @@
 package
 {
+	import flash.utils.ByteArray;
+
 	public class Match
 	{
 		private var groups:Group;
@@ -10,7 +12,8 @@ package
 		public function Match()
 		{
 			i_o_manager = new I_O_Manager();
-			groups = i_o_manager.GetDataGroup();
+			groups = new Group();
+			SetGroup(i_o_manager.ReadDataFile("data.txt"));
 		}
 		
 		public function SetUser(input_score:int):void			//사용자의 점수를 받게되면 해당 사용자의 Player객체를 생성하기 위한 메소드
@@ -83,6 +86,35 @@ package
 		public function GetOutputString():Array
 		{
 			return output_string;
+		}
+		
+		private function SetGroup(bytes:ByteArray):void
+		{
+			var byte_string:String = bytes.toString();		//byte형태로 저장되어있는 문자열들을 toString을 이용해서 문자열로 변환
+			var params:Array = byte_string.split("\n");		//해당 문자열을 개행문자("\n")를 기준으로 분할(Player별로 문자열을 분할)
+			
+			var reg:RegExp = new RegExp(/\D/g);
+			while(params.length != 0)
+			{
+				var string_temp:String;
+				string_temp = params.pop();
+				var data_array:Array = string_temp.split(",");		//개행문자열로 나눠진 한줄의 문자열(Player한명의 정보)를 다시 ','를 기준으로 분할 
+				if(data_array.length > 1)		//이 때 분할된 문자가 1개 이하인경우는 ','가 없는 경우이므로 올바른 정보가 아니므로 제외
+				{	
+					var user_lose_count:String = data_array.pop() as String;		//분할된 문자열들을 pop을 이용하여 차례로 가져옴
+					user_lose_count = user_lose_count.replace(reg,"");
+					var user_win_count:String = data_array.pop() as String;
+					user_win_count = user_win_count.replace(reg,"");
+					var user_score:String = data_array.pop() as String;
+					user_score = user_score.replace(reg,"");
+					var user_name:String = data_array.pop() as String;
+					var user_num:String = data_array.pop() as String;
+					user_num = user_num.replace(reg,"");
+					
+					var player:Player = new Player(int(user_num), user_name, int(user_score), int(user_win_count), int(user_lose_count));
+					groups.Input_player(player);
+				}
+			}
 		}
 
 		private function PrintPlayer(player:Player):String		//해당 Player객체의 내용들을 출력하기위한 메소드
