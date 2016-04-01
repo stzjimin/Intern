@@ -6,6 +6,10 @@ package
 		private var _player_count:int;		//Player의 총 개수
 		private const _group_count:int = 10;
 		
+		/**
+		 *Group클래스의 생성자 
+		 * 최초 생성시 지정한 그룹카운트+1만큼 그룹수를 생성
+		 */		
 		public function Group()
 		{
 			_player_count = 0;
@@ -26,11 +30,23 @@ package
 			return _player_count;
 		}
 
+		/**
+		 * 입력받은 그룹넘버에 해당하는 그룹을 반환 
+		 * @param group_num = 반환받고싶은 그룹의 넘버
+		 * @return group_num에 해당하는 그룹
+		 *
+		 */		
 		public function GetGroup(group_num:int):Vector.<Player>
 		{
 			return groups[group_num];
 		}
 		
+		/**
+		 * 현제 그룹을 user에 맞게 정렬
+		 * 정렬의 경우는 OrderAbs함수가 안으로 들어오면서 Player객체에 따로 불필요하게 차이값을 저장할 필요가 없어짐
+		 * @param user = 사용자가 입력한 점수를 바탕으로 정의된 Player객체
+		 * 
+		 */		
 		public function Sort(user:Player):void
 		{	//Player객체들을 정렬하기위한 메소드(이 때 기준이 될 Plyaer객체를 받고 해당  Player객체의 점수차가 적은 순서대로 정렬한다)
 			
@@ -51,18 +67,20 @@ package
 			}
 		}
 		
+		/**
+		 * 입력받은 데이터로부터 Player정보를 추출해 그룹화하는 함수
+		 * @param data = 데이터파일로 부터 받아온 데이터(String형태로 배열에 저장)
+		 * 받아온 한줄당의 데이터를 ','단위로 분할하여 생성된 Player객체에 저장 
+		 */		
 		public function SetGroup(data:Array):void
 		{
-		//	var byte_string:String = bytes.toString();		//byte형태로 저장되어있는 문자열들을 toString을 이용해서 문자열로 변환
-		//	var params:Array = byte_string.split("\n");		//해당 문자열을 개행문자("\n")를 기준으로 분할(Player별로 문자열을 분할)
-			
 			var reg:RegExp = new RegExp(/\D/g);
 			while(data.length != 0)
 			{
 				var string_temp:String;
 				string_temp = data.pop();
 				var data_array:Array = string_temp.split(",");		//개행문자열로 나눠진 한줄의 문자열(Player한명의 정보)를 다시 ','를 기준으로 분할 
-				if(data_array.length > 1)		//이 때 분할된 문자가 1개 이하인경우는 ','가 없는 경우이므로 올바른 정보가 아니므로 제외
+				if(data_array.length > 3)		//이 때 분할된 문자가 4개 이하인경우는 잘못된 정보로 판단
 				{	
 					var user_lose_count:String = data_array.pop() as String;		//분할된 문자열들을 pop을 이용하여 차례로 가져옴
 					user_lose_count = user_lose_count.replace(reg,"");
@@ -80,7 +98,12 @@ package
 			}
 		}
 		
-		private function Input_player(player:Player):void
+		/**
+		 * 입력받은 Player객체를 적절한 그룹으로 배치하기위한 함수
+		 * @param player = Player객체
+		 * 입력받은 Player객체의 점수를 바탕으로 올바른 그룹을 계산 후 해당 그룹으로 추가시켜줌
+		 */		
+		public function Input_player(player:Player):void
 		{
 			var group_num:int = (player.p_score - 1) / 100000;		//player가 속하는 그룹은 player점수에 따라 정해지므로 해당 규칙으로 플레이어 그룹을 설정
 			if(group_num > _group_count)

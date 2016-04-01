@@ -55,22 +55,19 @@ package
 					}
 				}
 
-				output_string.push(">Matched Group = " + (matched_group_num+1));
-				output_string.push("\n");
+				output_string.push(">Matched Group = " + (matched_group_num+1) + "\n");
 				trace(">Matched Group = " + (matched_group_num+1));
 				var matched_group:Vector.<Player> = groups.GetGroup(matched_group_num);
 				if(matched_group.length == 0)
 				{
-					output_string.push("This Group is empty!!");
-					output_string.push("\n");
+					output_string.push("This Group is empty!!" + "\n");
 					trace(" This Group is empty!!");
 				}
 				else
 				{
 					for(var i:int = 0; i < matched_group.length; i++)		//탐색하려는 그룹의 Player들을 출력
 					{
-						output_string.push(PrintPlayer(matched_group[i]));
-						output_string.push("\n");
+						output_string.push(PrintPlayer(matched_group[i]) + "\n");
 						count++;
 						if(count >= 5)		//출력된 Player의 수가 5이상이 되면 탐색그룹에 Player가 남아있어도 즉시 출력을 중단.
 							break;
