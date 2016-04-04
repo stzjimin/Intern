@@ -29,21 +29,6 @@ package
 				window.y = clickedPos.y;
 				addChild(window);
 			}
-			/*
-			if(event.getTouch(_quad,TouchPhase.BEGAN) && event.ctrlKey)
-			{
-				var currentPos:Point = event.getTouch(_quad,TouchPhase.BEGAN).getLocation(parent);
-				var msgBox:Game = new Game("HAHAHAHAHAHA");
-				msgBox.x = currentPos.x;
-				msgBox.y = currentPos.y;
-				trace("tirg!!");
-				addChild(msgBox);
-			}
-			else if(event.getTouch(_quad,TouchPhase.BEGAN))
-			{
-				trace("trig!!");
-			}
-			*/
 		}
 	}
 }
