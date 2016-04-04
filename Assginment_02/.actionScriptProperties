@@ -35,7 +35,15 @@
     </libraryPath>
     <sourceAttachmentPath/>
   </compiler>
+<<<<<<< HEAD
   <applications/>
+=======
+  <applications>
+    <application path="Assginment_02.as">
+      <airExcludes/>
+    </application>
+  </applications>
+>>>>>>> feature
   <modules/>
   <workers/>
   <buildCSSFiles/>
@@ -45,10 +53,13 @@
       <airSettings airCertificatePath="" airTimestamp="true" anePathSet="false" version="1">
         <airExcludes/>
         <anePaths/>
+<<<<<<< HEAD
         <newLaunchParams/>
         <modifiedLaunchParams/>
         <newPackagingParams/>
         <modifiedPackagingParams/>
+=======
+>>>>>>> feature
       </airSettings>
       <actionScriptSettings version="1"/>
     </buildTarget>
