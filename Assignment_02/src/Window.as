@@ -1,13 +1,17 @@
 package
 {
+	import flash.geom.Rectangle;
+	
 	import starling.display.Button;
 	import starling.display.Image;
+	import starling.display.Quad;
 	import starling.display.Sprite;
 	import starling.events.Event;
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
 	import starling.textures.Texture;
+	import starling.utils.Color;
 	
 	public class Window extends Sprite
 	{
@@ -43,11 +47,12 @@ package
 		private var _revertButtonTexture:Texture;
 		private var _closeButton:Button;
 		private var _closeButtonTexture:Texture;
-		
+
 		public function Window()
 		{
 			_background = new Sprite();
 			addChild(_background);
+			//전체 Sprite의 자식으로 윈도우틀 추가
 			
 			_titleBar = new Image(Texture.fromEmbeddedAsset(_barImage));
 			_titleBar.addEventListener(TouchEvent.TOUCH, getTilteBarClick);
@@ -108,19 +113,26 @@ package
 		
 		private function getTilteBarClick(event:TouchEvent):void
 		{
-			var touch:Touch = event.getTouch(_titleBar, TouchPhase.ENDED);
+			var touch:Touch = event.getTouch(_titleBar, TouchPhase.BEGAN);
+			var bound:Quad = new Quad(_background.width, _background.height, Color.argb(10, 0, 125, 125));
+			/*
+			if(touch)
+			{
+				_background.addChild(bound);
+			}
+			*/
+
+			touch = event.getTouch(_titleBar, TouchPhase.ENDED);
 			if(touch && touch.tapCount == 2)
 			{
 				_revertButton.visible = !_revertButton.visible;
 				_miniButton.visible = !_miniButton.visible;
 				_content.visible = !_content.visible;
 			}
-			
 			/*
-			touch = event.getTouch(_titleBar,TouchPhase.BEGAN)
-			if(touch)
+			else if(touch)
 			{
-			trace("Child = " + numChildren);
+				bound.removeFromParent();
 			}
 			*/
 			
