@@ -2,6 +2,7 @@ package
 {
 	import starling.display.Image;
 	import starling.display.Sprite;
+	import starling.events.Touch;
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
 	import starling.textures.Texture;
@@ -14,20 +15,35 @@ package
 		[Embed(source="GUI_resources\\revert.png")]
 		private static const ButtonBG:Class;
 		
+		private static var count:int = 0;
+		
+		private var thisCount:int;
 		private var _titleBar:Image;
+		private var background:Sprite;
 		
 		public function Window()
 		{
+			background = new Sprite();
+			addChild(background);
+			thisCount = count++;
 			_titleBar = new Image(Texture.fromEmbeddedAsset(_barImage));
 			_titleBar.addEventListener(TouchEvent.TOUCH, getTilteBarClick);
-			addChild(_titleBar);
+			background.addChild(_titleBar);
 		}
 		
-		public function getTilteBarClick(event:TouchEvent):void
+		private function getTilteBarClick(event:TouchEvent):void
 		{
-			if(event.getTouch(_titleBar,TouchPhase.BEGAN))
+			var touch:Touch = event.getTouch(_titleBar, TouchPhase.ENDED);
+			if(touch && touch.tapCount == 2)
 			{
-				trace("hahahah");
+				_titleBar.removeEventListener(TouchEvent.TOUCH, getTilteBarClick);
+				removeFromParent();
+			}
+			
+			touch = event.getTouch(_titleBar,TouchPhase.BEGAN)
+			if(touch)
+			{
+				trace("hahahah" + thisCount);
 			}
 		}
 	}

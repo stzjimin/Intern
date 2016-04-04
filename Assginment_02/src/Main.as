@@ -19,7 +19,7 @@ package
 			addChild(_quad);
 		}
 		
-		public function onQuadClicked(event:TouchEvent):void
+		private function onQuadClicked(event:TouchEvent):void
 		{
 			if(event.getTouch(_quad,TouchPhase.BEGAN))
 			{
