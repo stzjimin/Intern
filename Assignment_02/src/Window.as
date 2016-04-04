@@ -121,6 +121,7 @@ package
 				_background.addChild(bound);
 			}
 			*/
+			trace("aa");
 
 			touch = event.getTouch(_titleBar, TouchPhase.ENDED);
 			if(touch && touch.tapCount == 2)
