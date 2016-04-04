@@ -1,0 +1,9 @@
+package
+{
+	public class Content
+	{
+		public function Content()
+		{
+		}
+	}
+}
