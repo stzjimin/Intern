@@ -24,15 +24,8 @@ package
 		private static const _closeImage:Class;
 		
 		/**
-		 * _background = 전체 윈도우창의 틀
 		 * _titleBar = 타이틀바 이미지
-		 * _content = 윈도우창내부의 흰창
-		 * _miniButton = 윈도우창을 최소화 시키는 버튼
-		 * _miniButtonTexture = 최소화버튼의 텍스쳐
-		 * _revertButton = 최소화된 윈도우창을 다시 복구시키는 버튼
-		 * _revertButtonTexture = 복구버튼의 텍스쳐
-		 * _closeButton = 윈도우창을 삭제시키는 버튼
-		 * _closeButtonTexture = 삭제버튼의 텍스쳐
+		 * _background = 
 		 */		
 		private var _background:Sprite;
 		private var _titleBar:Image;
@@ -85,8 +78,6 @@ package
 		
 		private function onColseTriggerd(event:Event):void
 		{
-			_revertButton.removeEventListener(Event.TRIGGERED, onRevertTriggerd);
-			_miniButton.removeEventListener(Event.TRIGGERED, onMiniTriggerd);
 			_closeButton.removeEventListener(Event.TRIGGERED, onColseTriggerd);
 			_titleBar.removeEventListener(TouchEvent.TOUCH, getTilteBarClick);
 			removeFromParent();

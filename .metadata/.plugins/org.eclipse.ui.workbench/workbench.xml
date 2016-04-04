@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workbench progressCount="53" version="2.0">
 <workbenchAdvisor/>
-<window height="768" width="1024" x="573" y="150">
+<window height="768" maximized="true" width="1024" x="573" y="150">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
@@ -14,7 +14,7 @@
 <coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="99" y="22"/>
 <coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="84" y="22"/>
 <coolItem id="org.eclipse.wst.xml.ui.perspective.NewFileToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="61" y="22"/>
+<coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="190" y="22"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
@@ -62,21 +62,21 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Assignment_01/src/Assignment_01.as"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="165" selectionTopPixel="0"/>
 </editor>
-<editor focus="true" id="com.adobe.flexbuilder.editors.actionscript.ActionScriptEditor" name="Assignment_02.as" partName="Assignment_02.as" path="C:/Users/user/Documents/Intern/Assignment_02/src/Assignment_02.as" title="Assignment_02.as" tooltip="Assignment_02/src/Assignment_02.as" workbook="DefaultEditorWorkbook">
+<editor id="com.adobe.flexbuilder.editors.actionscript.ActionScriptEditor" name="Assignment_02.as" partName="Assignment_02.as" path="C:/Users/user/Documents/Intern/Assignment_02/src/Assignment_02.as" title="Assignment_02.as" tooltip="Assignment_02/src/Assignment_02.as" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Assignment_02/src/Assignment_02.as"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="325" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="155" selectionTopPixel="0"/>
 </editor>
 <editor id="com.adobe.flexbuilder.editors.actionscript.ActionScriptEditor" name="Main.as" partName="Main.as" path="C:/Users/user/Documents/Intern/Assignment_02/src/Main.as" title="Main.as" tooltip="Assignment_02/src/Main.as" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Assignment_02/src/Main.as"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="315" selectionTopPixel="74"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="353" selectionTopPixel="0"/>
 </editor>
 <editor id="com.adobe.flexbuilder.editors.actionscript.ActionScriptEditor" name="Content.as" partName="Content.as" path="C:/Users/user/Documents/Intern/Assignment_02/src/Content.as" title="Content.as" tooltip="Assignment_02/src/Content.as" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Assignment_02/src/Content.as"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="424" selectionTopPixel="0"/>
 </editor>
-<editor id="com.adobe.flexbuilder.editors.actionscript.ActionScriptEditor" name="Window.as" partName="Window.as" path="C:/Users/user/Documents/Intern/Assignment_02/src/Window.as" title="Window.as" tooltip="Assignment_02/src/Window.as" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="com.adobe.flexbuilder.editors.actionscript.ActionScriptEditor" name="Window.as" partName="Window.as" path="C:/Users/user/Documents/Intern/Assignment_02/src/Window.as" title="Window.as" tooltip="Assignment_02/src/Window.as" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Assignment_02/src/Window.as"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="329" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1385" selectionTopPixel="255"/>
 </editor>
 <editor id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="Assignment_02-app.xml" partName="Assignment_02-app.xml" path="C:/Users/user/Documents/Intern/Assignment_02/src/Assignment_02-app.xml" title="Assignment_02-app.xml" tooltip="Assignment_02/src/Assignment_02-app.xml" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Assignment_02/src/Assignment_02-app.xml"/>
@@ -85,9 +85,6 @@
 <views>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
-<expanded>
-<category IMemento.internal.id="Warnings (1 item)"/>
-</expanded>
 <columnWidths org.eclipse.ui.ide.locationField="90" org.eclipse.ui.ide.markerType="90" org.eclipse.ui.ide.pathField="120" org.eclipse.ui.ide.resourceField="90" org.eclipse.ui.ide.severityAndDescriptionField="300"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
@@ -107,7 +104,7 @@
 <fpeElement fpePath="/Assignment_02/src/%typeDefaultPackage"/>
 </fpeExpanded>
 <fpeSelection>
-<fpeElement fpePath="/Assignment_02/src/Assignment_02.as"/>
+<fpeElement fpePath="/Assignment_02/src/Window.as"/>
 </fpeSelection>
 <filters>
 <filter element=".flexProperties" isEnabled="true"/>
@@ -133,7 +130,7 @@
 <element path="/Assignment_02"/>
 </expanded>
 <selection>
-<element path="/Assignment_02/src/Assignment_02.as"/>
+<element path="/Assignment_02/src/Window.as"/>
 </selection>
 </viewState>
 </view>
@@ -150,7 +147,7 @@
 <viewState/>
 </view>
 </views>
-<perspectives activePerspective="com.adobe.flexbuilder.editors.mxml.ui.perspectives.development">
+<perspectives activePart="com.adobe.flexbuilder.editors.actionscript.ActionScriptEditor" activePerspective="com.adobe.flexbuilder.editors.mxml.ui.perspectives.development">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="com.adobe.flexbuilder.mxml.editor.ui.perspectives.DevelopmentPerspectiveFactory" id="com.adobe.flexbuilder.editors.mxml.ui.perspectives.development" label="Flash"/>
 <alwaysOnActionSet id="com.adobe.flexbuilder.flashbridge.flashproject.actionSet"/>
@@ -272,6 +269,11 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.flexbuilder.editors.actionscript.ActionScriptEditor" path="/Assignment_02/src/Content.as"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.flexbuilder.editors.actionscript.ActionScriptEditor" path="/Assignment_02/src/Window.as"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" path="/Assignment_02/src/Assignment_02-app.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" path="/Assignment_01/src/Assignment_01-app.xml"/>
+<editor factoryID="com.adobe.flexbuilder.editors.derived.ui.startpage.StartPageEditorInput" iconpath="platform:/plugin/com.adobe.flexbuilder.ui/icons/fb_app_16.png" id="com.adobe.flexbuilder.ui.StartPage" style="20" tooltip="Flash Builder Welcome Screen" url="file:/C:/Program Files/Adobe/Adobe Flash Builder 4.7 (64 Bit)/eclipse/plugins/com.adobe.flexbuilder.ui_4.7.0.349722/welcome/index.html?firstLaunch=false&amp;edition=prem&amp;version=470"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.flexbuilder.editors.actionscript.ActionScriptEditor" path="/Assignment_02/src/Content.as"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.flexbuilder.editors.actionscript.ActionScriptEditor" path="/Assignment_02/src/Main.as"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.flexbuilder.editors.actionscript.ActionScriptEditor" path="/Assignment_02/src/Window.as"/>
 </editors>
 <item historyLabel="Assignment_01-app.xml" index="0">
 <position info="not_deleted" x="0" y="0"/>
@@ -294,8 +296,39 @@
 <item historyLabel="Assignment_02-app.xml" index="5">
 <position info="not_deleted" x="4935" y="0"/>
 </item>
-<item active="true" historyLabel="Assignment_02.as" index="1">
+<item historyLabel="Assignment_02.as" index="1">
 <position info="not_deleted" x="357" y="0"/>
+</item>
+<item historyLabel="Assignment_01-app.xml" index="6">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Assignment_02.as" index="1">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Welcome" index="7"/>
+<item historyLabel="Assignment_02.as" index="1">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Content.as" index="8">
+<position info="not_deleted" x="424" y="0"/>
+</item>
+<item historyLabel="Main.as" index="9">
+<position info="not_deleted" x="460" y="0"/>
+</item>
+<item historyLabel="Assignment_02.as" index="1">
+<position info="not_deleted" x="155" y="0"/>
+</item>
+<item historyLabel="Main.as" index="9">
+<position info="not_deleted" x="460" y="0"/>
+</item>
+<item historyLabel="Window.as" index="10">
+<position info="not_deleted" x="329" y="0"/>
+</item>
+<item historyLabel="Window.as" index="10">
+<position/>
+</item>
+<item active="true" historyLabel="Window.as" index="10">
+<position/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -315,6 +348,9 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="com.adobe.flexbuilder.editors.derived.ui.startpage.StartPageEditorInput" id="com.adobe.flexbuilder.ui.StartPage" name="Web Browser" tooltip="Flash Builder Welcome Screen">
+<persistable iconpath="platform:/plugin/com.adobe.flexbuilder.ui/icons/fb_app_16.png" style="20" tooltip="Flash Builder Welcome Screen" url="file:/C:/Program Files/Adobe/Adobe Flash Builder 4.7 (64 Bit)/eclipse/plugins/com.adobe.flexbuilder.ui_4.7.0.349722/welcome/index.html?firstLaunch=false&amp;edition=prem&amp;version=470"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="Assignment_02-app.xml" tooltip="Assignment_02/src/Assignment_02-app.xml">
 <persistable path="/Assignment_02/src/Assignment_02-app.xml"/>
 </file>
@@ -329,9 +365,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.flexbuilder.editors.actionscript.ActionScriptEditor" name="Assignment_02.as" tooltip="Assignment_02/src/Assignment_02.as">
 <persistable path="/Assignment_02/src/Assignment_02.as"/>
-</file>
-<file factoryID="com.adobe.flexbuilder.editors.derived.ui.startpage.StartPageEditorInput" id="com.adobe.flexbuilder.ui.StartPage" name="Web Browser" tooltip="Flash Builder Welcome Screen">
-<persistable iconpath="platform:/plugin/com.adobe.flexbuilder.ui/icons/fb_app_16.png" style="20" tooltip="Flash Builder Welcome Screen" url="file:/C:/Program Files/Adobe/Adobe Flash Builder 4.7 (64 Bit)/eclipse/plugins/com.adobe.flexbuilder.ui_4.7.0.349722/welcome/index.html?firstLaunch=false&amp;edition=prem&amp;version=470"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.flexbuilder.editors.actionscript.ActionScriptEditor" name="Assignment_01.as" tooltip="Assignment_01/src/Assignment_01.as">
 <persistable path="/Assignment_01/src/Assignment_01.as"/>

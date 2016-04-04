@@ -85,8 +85,6 @@ package
 		
 		private function onColseTriggerd(event:Event):void
 		{
-			_revertButton.removeEventListener(Event.TRIGGERED, onRevertTriggerd);
-			_miniButton.removeEventListener(Event.TRIGGERED, onMiniTriggerd);
 			_closeButton.removeEventListener(Event.TRIGGERED, onColseTriggerd);
 			_titleBar.removeEventListener(TouchEvent.TOUCH, getTilteBarClick);
 			removeFromParent();
