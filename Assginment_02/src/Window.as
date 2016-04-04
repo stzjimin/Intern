@@ -1,5 +1,11 @@
 package
 {
+	import flash.geom.Point;
+	
+	import starling.animation.Transitions;
+	import starling.animation.Tween;
+	import starling.core.Starling;
+	import starling.display.DisplayObject;
 	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.events.Touch;
@@ -28,6 +34,8 @@ package
 			thisCount = count++;
 			_titleBar = new Image(Texture.fromEmbeddedAsset(_barImage));
 			_titleBar.addEventListener(TouchEvent.TOUCH, getTilteBarClick);
+			_titleBar.x = 0;
+			_titleBar.y = 0;
 			background.addChild(_titleBar);
 		}
 		
@@ -43,8 +51,34 @@ package
 			touch = event.getTouch(_titleBar,TouchPhase.BEGAN)
 			if(touch)
 			{
+				trace("b_x = " + background.x);
+				trace("b_y = " + background.y);
+				trace("t_x = " + _titleBar.x);
+				trace("t_y = " + _titleBar.y);
+				trace("th_x = " + this.x);
+				trace("th_y = " + this.y);
 				trace("hahahah" + thisCount);
 			}
+			
+			var touches:Vector.<Touch> = event.getTouches(stage);
+			if(touches)
+			{
+				touch = event.getTouch(_titleBar, TouchPhase.MOVED);
+				if(touch)
+				{
+					var position:Point = touch.getLocation(stage);
+					trace("x =" + position.x);
+					trace("y =" + position.y);
+					moveWindow(0.14, position.x, position.y, Transitions.EASE_OUT);
+				}
+			}
+		}
+		
+		private function moveWindow(inTime:Number, inX:int, inY:int, inEase:String):void
+		{
+			var tween:Tween = new Tween(this, inTime, inEase);
+			tween.moveTo(inX, inY);
+			Starling.juggler.add(tween);
 		}
 	}
 }
