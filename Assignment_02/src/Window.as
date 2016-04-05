@@ -130,6 +130,7 @@ package
 			var touch:Touch = event.getTouch(_titleBar, TouchPhase.BEGAN);
 			if(touch)
 			{
+				this.parent.setChildIndex(this,this.parent.numChildren);
 				this.alpha = 0.5;
 			}
 			
