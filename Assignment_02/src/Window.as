@@ -1,8 +1,11 @@
 package
 {	
 	import starling.display.Button;
+	import starling.display.DisplayObject;
+	import starling.display.DisplayObjectContainer;
 	import starling.display.Image;
 	import starling.display.Sprite;
+	import starling.display.Stage;
 	import starling.events.Event;
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
@@ -86,11 +89,26 @@ package
 		 */		
 		private function onColseTriggerd(event:Event):void
 		{
+			close();
+		}
+		
+		public function close():void
+		{
 			_revertButton.removeEventListener(Event.TRIGGERED, onRevertTriggerd);
 			_miniButton.removeEventListener(Event.TRIGGERED, onMiniTriggerd);
 			_closeButton.removeEventListener(Event.TRIGGERED, onColseTriggerd);
 			_titleBar.removeEventListener(TouchEvent.TOUCH, getTilteBarClick);
+			_content.removeEventListeners(TouchEvent.TOUCH);
+			//	_content.removeEventListeners(TouchEvent.TOUCH);
+		//	_content.getChildAt(0).removeEventListeners(TouchEvent.TOUCH);
+		//	var par:DisplayObjectContainer = this.parent;
+			//	trace(_content.getChildAt(0).getgetChildAt(0));
+		//	var child:DisplayObjectContainer = _content;
+		//	_content.close();
+		//	var childContent:DisplayObject = child.getChildAt(0);
+		//	trace(childContent);
 			removeFromParent();
+			//	par.addChild(this);
 		}
 		
 		/**
