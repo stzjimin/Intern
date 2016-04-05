@@ -2,7 +2,6 @@ package
 {	
 	import starling.display.Button;
 	import starling.display.Image;
-	import starling.display.Quad;
 	import starling.display.Sprite;
 	import starling.events.Event;
 	import starling.events.Touch;
@@ -43,6 +42,11 @@ package
 		private var _closeButton:Button;
 		private var _closeButtonTexture:Texture;
 
+		/**
+		 * Window클래스의 생성자 
+		 * Window클래스는 타이틀바, 최소화버튼, 복구버튼, 닫기버튼, 내용으로 구성
+		 * content(내용)은 자식윈도우를 가지고있음
+		 */		
 		public function Window()
 		{
 			_titleBar = new Image(Texture.fromEmbeddedAsset(barImage));
@@ -75,6 +79,11 @@ package
 			addChild(_content);
 		}
 		
+		/**
+		 *닫기버튼(_closeButton)을 클릭 시 호출되는 함수
+		 * @param event
+		 * 닫기버튼이 클릭되면 이벤트리스너들을 모두제거해준 후 해당객체를 부모로부터 제거
+		 */		
 		private function onColseTriggerd(event:Event):void
 		{
 			_revertButton.removeEventListener(Event.TRIGGERED, onRevertTriggerd);
@@ -84,6 +93,11 @@ package
 			removeFromParent();
 		}
 		
+		/**
+		 *최소화버튼(_miniButton)을 클릭 시 호출되는 함수 
+		 * @param event
+		 * 최소화버튼이 클릭되면 내용(_content)과 최소화버튼(_miniButton)을 가려주고 복구버튼(_revertButton)을 노출
+		 */		
 		private function onMiniTriggerd(event:Event):void
 		{
 			_miniButton.visible = false;
@@ -91,6 +105,11 @@ package
 			_content.visible = false;
 		}
 		
+		/**
+		 *복구버튼(_revertButton)을 클릭 시 호출되는 함수 
+		 * @param event
+		 * 복구버튼이 클릭되면 내용(_content)과 최소화버튼(_miniButton)이 노출되고 복구버튼(_revertButton)이 가려짐
+		 */		
 		private function onRevertTriggerd(event:Event):void
 		{
 			_revertButton.visible = false;
@@ -98,25 +117,33 @@ package
 			_content.visible = true;
 		}
 		
+		/**
+		 *타이틀바(_titleBar)를 터치할 때 호출되는 함수 
+		 * @param event
+		 * 타이틀바(_titleBar)가 터치되면 눌려졌을 때, 움직일 때, 때어졌을 때의 3가지를 판단
+		 * 눌려졌을 때 = 윈도우의 알파값을 0.5로 변경
+		 * 움직일 때 = 마우스의 위치변화값을 윈도우에 적용
+		 * 때어졌을 때 = 윈도우의 알파값을 1로 변경, 더블클릭의 경우는 윈도우의 최소화와 복구를 반전
+		 */		
 		private function getTilteBarClick(event:TouchEvent):void
 		{
-			var touch:Touch = event.getTouch(_titleBar, TouchPhase.ENDED);
+			var touch:Touch = event.getTouch(_titleBar, TouchPhase.BEGAN);
+			if(touch)
+			{
+				this.alpha = 0.5;
+			}
+			
+			touch = event.getTouch(_titleBar, TouchPhase.ENDED);
+			if(touch)
+			{
+				this.alpha = 1;
+			}
+			
 			if(touch && touch.tapCount == 2)
 			{
 				_revertButton.visible = !_revertButton.visible;
 				_miniButton.visible = !_miniButton.visible;
 				_content.visible = !_content.visible;
-			}
-			
-			touch = event.getTouch(_titleBar, TouchPhase.BEGAN);
-			if(touch)
-			{
-				this.alpha = 0.5;
-			}
-			touch = event.getTouch(_titleBar, TouchPhase.ENDED);
-			if(touch)
-			{
-				this.alpha = 1;
 			}
 			
 			touch = event.getTouch(_titleBar, TouchPhase.MOVED);
