@@ -1,7 +1,5 @@
 package
-{
-	import flash.geom.Rectangle;
-	
+{	
 	import starling.display.Button;
 	import starling.display.Image;
 	import starling.display.Quad;
@@ -11,24 +9,22 @@ package
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
 	import starling.textures.Texture;
-	import starling.utils.Color;
 	
 	public class Window extends Sprite
 	{
 		[Embed(source="GUI_resources\\titleBar.png")]
-		private static const _barImage:Class;
+		private static const barImage:Class;
 		
 		[Embed(source="GUI_resources\\minimize.png")]
-		private static const _miniImage:Class;
+		private static const miniImage:Class;
 		
 		[Embed(source="GUI_resources\\revert.png")]
-		private static const _revertImage:Class;
+		private static const revertImage:Class;
 		
 		[Embed(source="GUI_resources\\close.png")]
-		private static const _closeImage:Class;
+		private static const closeImage:Class;
 		
 		/**
-		 * _background = 전체 윈도우창의 틀
 		 * _titleBar = 타이틀바 이미지
 		 * _content = 윈도우창내부의 흰창
 		 * _miniButton = 윈도우창을 최소화 시키는 버튼
@@ -38,7 +34,6 @@ package
 		 * _closeButton = 윈도우창을 삭제시키는 버튼
 		 * _closeButtonTexture = 삭제버튼의 텍스쳐
 		 */		
-		private var _background:Sprite;
 		private var _titleBar:Image;
 		private var _content:Content;
 		private var _miniButton:Button;
@@ -50,42 +45,34 @@ package
 
 		public function Window()
 		{
-			_background = new Sprite();
-			addChild(_background);
-			//전체 Sprite의 자식으로 윈도우틀 추가
-			
-			_titleBar = new Image(Texture.fromEmbeddedAsset(_barImage));
+			_titleBar = new Image(Texture.fromEmbeddedAsset(barImage));
 			_titleBar.addEventListener(TouchEvent.TOUCH, getTilteBarClick);
 			
 			_content = new Content();
 			
-			_miniButtonTexture = Texture.fromEmbeddedAsset(_miniImage);
+			_miniButtonTexture = Texture.fromEmbeddedAsset(miniImage);
 			_miniButton = new Button(_miniButtonTexture);
 			_miniButton.x = 448;
 			_miniButton.addEventListener(Event.TRIGGERED, onMiniTriggerd);
 			_miniButton.visible = true;
 			
-			_revertButtonTexture = Texture.fromEmbeddedAsset(_revertImage);
+			_revertButtonTexture = Texture.fromEmbeddedAsset(revertImage);
 			_revertButton = new Button(_revertButtonTexture);
 			_revertButton.x = 448;
 			_revertButton.addEventListener(Event.TRIGGERED, onRevertTriggerd);
 			_revertButton.scaleY = 0.9;
 			_revertButton.visible = false;
 			
-			_closeButtonTexture = Texture.fromEmbeddedAsset(_closeImage);
+			_closeButtonTexture = Texture.fromEmbeddedAsset(closeImage);
 			_closeButton = new Button(_closeButtonTexture);
 			_closeButton.x = 480;
 			_closeButton.addEventListener(Event.TRIGGERED, onColseTriggerd);
 			
-			_background.addChild(_titleBar);
-			_background.addChild(_miniButton);
-			_background.addChild(_revertButton);
-			_background.addChild(_closeButton);
-			_background.addChild(_content);
-			
-			trace(_closeButton.width);
-			trace(_miniButton.width);
-			trace(_background.width);
+			addChild(_titleBar);
+			addChild(_miniButton);
+			addChild(_revertButton);
+			addChild(_closeButton);
+			addChild(_content);
 		}
 		
 		private function onColseTriggerd(event:Event):void
@@ -113,29 +100,24 @@ package
 		
 		private function getTilteBarClick(event:TouchEvent):void
 		{
-			var touch:Touch = event.getTouch(_titleBar, TouchPhase.BEGAN);
-			var bound:Quad = new Quad(_background.width, _background.height, Color.argb(10, 0, 125, 125));
-			/*
-			if(touch)
-			{
-				_background.addChild(bound);
-			}
-			*/
-			trace("aa");
-
-			touch = event.getTouch(_titleBar, TouchPhase.ENDED);
+			var touch:Touch = event.getTouch(_titleBar, TouchPhase.ENDED);
 			if(touch && touch.tapCount == 2)
 			{
 				_revertButton.visible = !_revertButton.visible;
 				_miniButton.visible = !_miniButton.visible;
 				_content.visible = !_content.visible;
 			}
-			/*
-			else if(touch)
+			
+			touch = event.getTouch(_titleBar, TouchPhase.BEGAN);
+			if(touch)
 			{
-				bound.removeFromParent();
+				this.alpha = 0.5;
 			}
-			*/
+			touch = event.getTouch(_titleBar, TouchPhase.ENDED);
+			if(touch)
+			{
+				this.alpha = 1;
+			}
 			
 			touch = event.getTouch(_titleBar, TouchPhase.MOVED);
 			if(touch)
