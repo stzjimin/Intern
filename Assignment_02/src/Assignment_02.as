@@ -10,8 +10,11 @@ package
 		
 		public function Assignment_02()
 		{
+			new URLloader();
+
 			_starling = new Starling(Main, stage);
 			_starling.start();
+
 		}
 	}
 }
