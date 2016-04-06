@@ -25,11 +25,11 @@ package
 		
 		public function BitmapLoader(progFunc:Function, compFunc:Function)
 		{
-			var titleBarURL:URLRequest = new URLRequest("https://raw.githubusercontent.com/stzyoungsun/youngsun/master/Assignment02/src/GUI_resources/titleBar.png");
-			var closeButtonURL:URLRequest = new URLRequest("https://raw.githubusercontent.com/stzyoungsun/youngsun/master/Assignment02/src/GUI_resources/close.png");
-			var miniButtonURL:URLRequest = new URLRequest("https://raw.githubusercontent.com/stzyoungsun/youngsun/master/Assignment02/src/GUI_resources/minimize.png");
-			var revertButtonURL:URLRequest = new URLRequest("https://raw.githubusercontent.com/stzyoungsun/youngsun/master/Assignment02/src/GUI_resources/revert.png");
-			var contentURL:URLRequest = new URLRequest("https://raw.githubusercontent.com/stzyoungsun/youngsun/master/Assignment02/src/GUI_resources/contents.png");
+			var titleBarURL:URLRequest = new URLRequest("https://raw.githubusercontent.com/stzjimin/JiMin/master/Assignment_02/src/GUI_resources/titleBar.png");
+			var closeButtonURL:URLRequest = new URLRequest("https://raw.githubusercontent.com/stzjimin/JiMin/master/Assignment_02/src/GUI_resources/close.png");
+			var miniButtonURL:URLRequest = new URLRequest("https://raw.githubusercontent.com/stzjimin/JiMin/master/Assignment_02/src/GUI_resources/minimize.png");
+			var revertButtonURL:URLRequest = new URLRequest("https://raw.githubusercontent.com/stzjimin/JiMin/master/Assignment_02/src/GUI_resources/revert.png");
+			var contentURL:URLRequest = new URLRequest("https://raw.githubusercontent.com/stzjimin/JiMin/master/Assignment_02/src/GUI_resources/contents.png");
 			
 			completeCounter = 0;
 			completeFunc = compFunc;
