@@ -32,7 +32,7 @@ package
 		 */		
 		public function Content()
 		{	
-			_content = new Image(Texture.fromBitmap(URLloader.contentBitmap));
+			_content = new Image(Texture.fromBitmap(BitmapLoader.contentBitmap));
 			_content.width = 512;
 			_content.height = 256;
 			_content.addEventListener(TouchEvent.TOUCH,onContentClicked);
@@ -70,7 +70,7 @@ package
 				window.x = clickedPos.x;
 				window.y = clickedPos.y;
 				addChild(window);
-				trace("content 자식 개수 = " + this.numChildren);
+			//	trace("content 자식 개수 = " + this.numChildren);
 			}
 		}
 	
@@ -79,7 +79,7 @@ package
 			_content.removeEventListener(TouchEvent.TOUCH,onContentClicked);
 			for(var i:int = this.numChildren-1; i > 0; i--)
 			{
-				trace("close Window " + i);
+			//	trace("close Window " + i);
 			//	Window(this.getChildAt(i)).dispose();
 				Window(this.getChildAt(i)).distroy();
 			}

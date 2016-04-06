@@ -53,14 +53,14 @@ package
 		 */		
 		public function Window()
 		{	
-			_titleBar = new Image(Texture.fromBitmap(URLloader.titleBarBitmap));
+			_titleBar = new Image(Texture.fromBitmap(BitmapLoader.titleBarBitmap));
 			_titleBar.width = 512;
 			_titleBar.height = 32;
 			_titleBar.addEventListener(TouchEvent.TOUCH, getTilteBarClick);
 			
 			_content = new Content();
 			
-			_miniButtonTexture = Texture.fromBitmap(URLloader.miniButtonBitmap);
+			_miniButtonTexture = Texture.fromBitmap(BitmapLoader.miniButtonBitmap);
 			_miniButton = new Button(_miniButtonTexture);
 			_miniButton.width = 32;
 			_miniButton.height = 32;
@@ -68,7 +68,7 @@ package
 			_miniButton.addEventListener(starling.events.Event.TRIGGERED, onMiniTriggerd);
 			_miniButton.visible = true;
 			
-			_revertButtonTexture = Texture.fromBitmap(URLloader.revertButtonBitmap);
+			_revertButtonTexture = Texture.fromBitmap(BitmapLoader.revertButtonBitmap);
 			_revertButton = new Button(_revertButtonTexture);
 			_revertButton.width = 30;
 			_revertButton.height = 35;
@@ -77,7 +77,7 @@ package
 			_revertButton.scaleY = 0.9;
 			_revertButton.visible = false;
 			
-			_closeButtonTexture = Texture.fromBitmap(URLloader.closeButtonBitmap);
+			_closeButtonTexture = Texture.fromBitmap(BitmapLoader.closeButtonBitmap);
 			_closeButton = new Button(_closeButtonTexture);
 			_closeButton.width = 32;
 			_closeButton.height = 32;
@@ -92,16 +92,9 @@ package
 		}
 		
 		/**
-		 *닫기버튼(_closeButton)을 클릭 시 호출되는 함수
-		 * @param event
-		 * 닫기버튼이 클릭되면 이벤트리스너들을 모두제거해준 후 해당객체를 부모로부터 제거
+		 * 객체가 제거될 때 호출할 함수
+		 * 객체가 제거될 때 EventListener들을 모두 제거해주고 해당 
 		 */		
-		private function onColseTriggerd(event:starling.events.Event):void
-		{
-			distroy();
-		//	System.gc();
-		}
-		
 		public function distroy():void
 		{
 			_revertButtonTexture.dispose();
@@ -131,7 +124,18 @@ package
 			_content.dispose();
 			_content = null;
 			removeFromParent();
-		//	this.dispose();
+			//	this.dispose();
+		}
+		
+		/**
+		 *닫기버튼(_closeButton)을 클릭 시 호출되는 함수
+		 * @param event
+		 * 닫기버튼 클릭 시 distroy함수를 호출
+		 */		
+		private function onColseTriggerd(event:starling.events.Event):void
+		{
+			distroy();
+			System.gc();
 		}
 		
 		/**

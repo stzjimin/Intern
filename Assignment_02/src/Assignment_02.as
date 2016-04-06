@@ -10,7 +10,7 @@ package
 		
 		public function Assignment_02()
 		{
-			new URLloader();
+			new BitmapLoader();
 			
 			_starling = new Starling(Main, stage);
 			_starling.start();

@@ -9,7 +9,7 @@ package
 	
 	import starling.textures.Texture;
 	
-	public class URLloader
+	public class BitmapLoader
 	{
 		private static var _titleBarTexture:Texture;
 		
@@ -25,7 +25,7 @@ package
 		private var revertButtonLoader:Loader = new Loader();
 		private var contentLoader:Loader = new Loader();
 		
-		public function URLloader()
+		public function BitmapLoader()
 		{
 			/*
 			var titleBarURL:URLRequest = new URLRequest("https://raw.githubusercontent.com/stzyoungsun/youngsun/master/Assignment02/src/GUI_resources/titleBar.png");
