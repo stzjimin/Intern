@@ -1,21 +1,13 @@
 package
 {	
 	import flash.display.Bitmap;
-	import flash.display.Loader;
-	import flash.events.Event;
 	import flash.filesystem.File;
-	import flash.filesystem.FileMode;
 	import flash.filesystem.FileStream;
-	import flash.net.URLRequest;
 	import flash.system.System;
-	import flash.utils.ByteArray;
 	
 	import starling.display.Button;
-	import starling.display.DisplayObject;
-	import starling.display.DisplayObjectContainer;
 	import starling.display.Image;
 	import starling.display.Sprite;
-	import starling.display.Stage;
 	import starling.events.Event;
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
@@ -93,7 +85,8 @@ package
 		
 		/**
 		 * 객체가 제거될 때 호출할 함수
-		 * 객체가 제거될 때 EventListener들을 모두 제거해주고 해당 
+		 * 객체가 제거될 때 EventListener들을 모두 제거해주고 해당 객체를 null로 전환해줌
+		 * NOTE @Texture를 BitmapLoader에서 가지고있는게 좋은지 해당 객체가 가지고있는게 좋은지 모르겠습니다
 		 */		
 		public function distroy():void
 		{
@@ -124,7 +117,6 @@ package
 			_content.dispose();
 			_content = null;
 			removeFromParent();
-			//	this.dispose();
 		}
 		
 		/**

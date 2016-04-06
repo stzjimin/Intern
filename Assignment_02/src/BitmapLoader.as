@@ -3,11 +3,7 @@ package
 	import flash.display.Bitmap;
 	import flash.display.Loader;
 	import flash.events.Event;
-	import flash.events.ProgressEvent;
 	import flash.net.URLRequest;
-	import flash.system.System;
-	
-	import starling.textures.Texture;
 	
 	public class BitmapLoader
 	{
@@ -23,20 +19,21 @@ package
 		private var _revertButtonLoader:Loader = new Loader();
 		private var _contentLoader:Loader = new Loader();
 		
-		private var completeFunc:Function;
+		private var completeFunc:Function;	//비트맵의 로딩이 완료될 경우 호출될 함수
+		private var progressFunc:Function;	//비트맵들 중 하나라도 로드가 완료되면 호출되는 함수
 		private var completeCounter:int;
 		
-		public function BitmapLoader(func:Function)
+		public function BitmapLoader(progFunc:Function, compFunc:Function)
 		{
 			var titleBarURL:URLRequest = new URLRequest("https://raw.githubusercontent.com/stzyoungsun/youngsun/master/Assignment02/src/GUI_resources/titleBar.png");
-			//	var titleBarURL:URLRequest = new URLRequest("http://images.kbench.com:8080/kbench/article/2014_03/k131448p1n1.jpg");
 			var closeButtonURL:URLRequest = new URLRequest("https://raw.githubusercontent.com/stzyoungsun/youngsun/master/Assignment02/src/GUI_resources/close.png");
 			var miniButtonURL:URLRequest = new URLRequest("https://raw.githubusercontent.com/stzyoungsun/youngsun/master/Assignment02/src/GUI_resources/minimize.png");
 			var revertButtonURL:URLRequest = new URLRequest("https://raw.githubusercontent.com/stzyoungsun/youngsun/master/Assignment02/src/GUI_resources/revert.png");
 			var contentURL:URLRequest = new URLRequest("https://raw.githubusercontent.com/stzyoungsun/youngsun/master/Assignment02/src/GUI_resources/contents.png");
 			
 			completeCounter = 0;
-			completeFunc = func;
+			completeFunc = compFunc;
+			progressFunc = progFunc;
 			
 			/*
 			var titleBarURL:URLRequest = new URLRequest("GUI_resources/titleBar.png");
@@ -47,7 +44,6 @@ package
 			*/
 			
 			_titleBarLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, titleBarCompleate);
-			_titleBarLoader.contentLoaderInfo.addEventListener(ProgressEvent.PROGRESS, titleBarProgress);
 			_titleBarLoader.load(titleBarURL);
 			
 			_closeButtonLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, closeButtonCompleate);
@@ -63,6 +59,7 @@ package
 			_contentLoader.load(contentURL);
 		}
 		
+		//getter && setter
 		public static function get contentBitmap():Bitmap
 		{
 			return _contentBitmap;
@@ -87,25 +84,12 @@ package
 		{
 			return _titleBarBitmap;
 		}
-		
-		private function titleBarProgress(event:ProgressEvent):void
-		{
-			var prog:int = Math.ceil(event.bytesLoaded / event.bytesTotal * 100);
-			trace(prog + "%");
-		//	_titleBarBitmap = event.currentTarget.loader.content as Bitmap;
-		//	titleBarLoader.close();
-		//	_titleBarTexture = Texture.fromBitmap(_titleBarBitmap);
-		//	trace("aa");
-		}
 
+		//각 로더별로 컴플릿될경우 호출되는 함수들
 		private function titleBarCompleate(event:Event):void
 		{
-			trace("load ing = " + System.totalMemory / 1024);
 			_titleBarBitmap = event.currentTarget.loader.content as Bitmap;
 			_titleBarLoader.contentLoaderInfo.removeEventListener(Event.COMPLETE, titleBarCompleate);
-			_titleBarLoader.contentLoaderInfo.removeEventListener(ProgressEvent.PROGRESS, titleBarProgress);
-		//	closeButtonLoader.load(closeButtonURL);
-			trace("aa");
 			checkLoadingComplete();
 		}
 		
@@ -113,8 +97,6 @@ package
 		{
 			_closeButtonBitmap = event.currentTarget.loader.content as Bitmap;
 			_closeButtonLoader.contentLoaderInfo.removeEventListener(Event.COMPLETE, titleBarCompleate);
-		//	miniButtonLoader.load(miniButtonURL);
-			trace("bb");
 			checkLoadingComplete();
 		}
 		
@@ -122,8 +104,6 @@ package
 		{
 			_miniButtonBitmap = event.currentTarget.loader.content as Bitmap;
 			_miniButtonLoader.contentLoaderInfo.removeEventListener(Event.COMPLETE, titleBarCompleate);
-		//	revertButtonLoader.load(revertButtonURL);
-			trace("cc");
 			checkLoadingComplete();
 		}
 		
@@ -131,8 +111,6 @@ package
 		{
 			_revertButtonBitmap = event.currentTarget.loader.content as Bitmap;
 			_revertButtonLoader.contentLoaderInfo.removeEventListener(Event.COMPLETE, titleBarCompleate);
-		//	contentLoader.load(contentURL);
-			trace("dd");
 			checkLoadingComplete();
 		}
 		
@@ -140,18 +118,20 @@ package
 		{
 			_contentBitmap = event.currentTarget.loader.content as Bitmap;
 			_contentLoader.contentLoaderInfo.removeEventListener(Event.COMPLETE, titleBarCompleate);
-			trace("ee");
 			checkLoadingComplete();
 		}
 		
+		/**
+		 *각 로더의 로드가 완료되면 실행되는 함수 
+		 * completeCounter의 수로 로드가 완료된 비트맵의 숫자를 측정하고 모두 로드가 됬다면 completeFunc을 호출
+		 */		
 		private function checkLoadingComplete():void
 		{
 			completeCounter++;
-			
+			progressFunc(completeCounter);
 			if(completeCounter >= 5)
 			{
-				trace("completed");
-				//call a custom function when loading completes!
+				trace("load completed");
 				completeFunc();
 			}
 		}

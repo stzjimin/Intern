@@ -70,7 +70,6 @@ package
 				window.x = clickedPos.x;
 				window.y = clickedPos.y;
 				addChild(window);
-			//	trace("content 자식 개수 = " + this.numChildren);
 			}
 		}
 	
@@ -79,8 +78,6 @@ package
 			_content.removeEventListener(TouchEvent.TOUCH,onContentClicked);
 			for(var i:int = this.numChildren-1; i > 0; i--)
 			{
-			//	trace("close Window " + i);
-			//	Window(this.getChildAt(i)).dispose();
 				Window(this.getChildAt(i)).distroy();
 			}
 		}
