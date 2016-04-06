@@ -19,6 +19,11 @@ package
 		 */		
 		public function Main()
 		{
+			new BitmapLoader(onloadingComplete);
+		}
+		
+		private function onloadingComplete():void
+		{
 			_quad = new Quad(700, 700, Color.argb(125, 125, 255, 255));
 			_quad.addEventListener(TouchEvent.TOUCH,onQuadClicked);
 			addChild(_quad);
