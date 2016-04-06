@@ -5,6 +5,7 @@ package
 	import flash.events.Event;
 	import flash.events.ProgressEvent;
 	import flash.net.URLRequest;
+	import flash.system.System;
 	
 	import starling.textures.Texture;
 	
@@ -12,11 +13,11 @@ package
 	{
 		private static var _titleBarTexture:Texture;
 		
-		private static var _titleBarBitmap:Bitmap;
-		private static var _closeButtonBitmap:Bitmap;
-		private static var _miniButtonBitmap:Bitmap;
-		private static var _revertButtonBitmap:Bitmap;
-		private static var _contentBitmap:Bitmap;
+		private static var _titleBarBitmap:Bitmap = new Bitmap();
+		private static var _closeButtonBitmap:Bitmap = new Bitmap();
+		private static var _miniButtonBitmap:Bitmap = new Bitmap();
+		private static var _revertButtonBitmap:Bitmap = new Bitmap();
+		private static var _contentBitmap:Bitmap = new Bitmap();
 		
 		private var titleBarLoader:Loader = new Loader();
 		private var closeButtonLoader:Loader = new Loader();
@@ -26,15 +27,22 @@ package
 		
 		public function URLloader()
 		{
+			/*
 			var titleBarURL:URLRequest = new URLRequest("https://raw.githubusercontent.com/stzyoungsun/youngsun/master/Assignment02/src/GUI_resources/titleBar.png");
 			var closeButtonURL:URLRequest = new URLRequest("https://raw.githubusercontent.com/stzyoungsun/youngsun/master/Assignment02/src/GUI_resources/close.png");
 			var miniButtonURL:URLRequest = new URLRequest("https://raw.githubusercontent.com/stzyoungsun/youngsun/master/Assignment02/src/GUI_resources/minimize.png");
 			var revertButtonURL:URLRequest = new URLRequest("https://raw.githubusercontent.com/stzyoungsun/youngsun/master/Assignment02/src/GUI_resources/revert.png");
 			var contentURL:URLRequest = new URLRequest("https://raw.githubusercontent.com/stzyoungsun/youngsun/master/Assignment02/src/GUI_resources/contents.png");
+			*/
 			
+			var titleBarURL:URLRequest = new URLRequest("GUI_resources/titleBar.png");
+			var closeButtonURL:URLRequest = new URLRequest("GUI_resources/close.png");
+			var miniButtonURL:URLRequest = new URLRequest("GUI_resources/minimize.png");
+			var revertButtonURL:URLRequest = new URLRequest("GUI_resources/revert.png");
+			var contentURL:URLRequest = new URLRequest("GUI_resources/contents.png");
 			
 			titleBarLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, titleBarCompleate);
-		//	titleBarLoader.contentLoaderInfo.addEventListener(ProgressEvent.PROGRESS, titleBarCompleate);
+			titleBarLoader.contentLoaderInfo.addEventListener(ProgressEvent.PROGRESS, titleBarProgress);
 			titleBarLoader.load(titleBarURL);
 			
 			closeButtonLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, closeButtonCompleate);
@@ -74,11 +82,21 @@ package
 		{
 			return _titleBarBitmap;
 		}
+		
+		private function titleBarProgress(event:ProgressEvent):void
+		{
+		//	_titleBarBitmap = event.currentTarget.loader.content as Bitmap;
+		//	titleBarLoader.close();
+		//	_titleBarTexture = Texture.fromBitmap(_titleBarBitmap);
+		//	trace("aa");
+		}
 
 		private function titleBarCompleate(event:Event):void
 		{
+			trace("load ing = " + System.totalMemory / 1024);
 			_titleBarBitmap = event.currentTarget.loader.content as Bitmap;
 			titleBarLoader.contentLoaderInfo.removeEventListener(Event.COMPLETE, titleBarCompleate);
+			titleBarLoader.contentLoaderInfo.removeEventListener(ProgressEvent.PROGRESS, titleBarProgress);
 			_titleBarTexture = Texture.fromBitmap(_titleBarBitmap);
 			trace("aa");
 		}

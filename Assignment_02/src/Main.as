@@ -1,6 +1,7 @@
 package
 {
 	import flash.geom.Point;
+	import flash.system.System;
 	
 	import starling.display.Quad;
 	import starling.display.Sprite;

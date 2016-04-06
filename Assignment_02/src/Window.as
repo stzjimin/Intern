@@ -7,6 +7,7 @@ package
 	import flash.filesystem.FileMode;
 	import flash.filesystem.FileStream;
 	import flash.net.URLRequest;
+	import flash.system.System;
 	import flash.utils.ByteArray;
 	
 	import starling.display.Button;
@@ -23,20 +24,6 @@ package
 	
 	public class Window extends Sprite
 	{
-		/*
-		[Embed(source="GUI_resources\\titleBar.png")]
-		private static const barImage:Class;
-		
-		[Embed(source="GUI_resources\\minimize.png")]
-		private static const miniImage:Class;
-		
-		[Embed(source="GUI_resources\\revert.png")]
-		private static const revertImage:Class;
-		
-		[Embed(source="GUI_resources\\close.png")]
-		private static const closeImage:Class;
-		*/
-		
 		/**
 		 * _titleBar = 타이틀바 이미지
 		 * _content = 윈도우창내부의 흰창
@@ -66,65 +53,6 @@ package
 		 */		
 		public function Window()
 		{	
-		//	var loader:Loader = new Loader();
-		//	var url:URLRequest = new URLRequest("https://raw.githubusercontent.com/stzjimin/JiMin/master/Assignment_02/src/GUI_resources/titleBar.png");
-			
-		//	var byte:ByteArray = new ByteArray();
-		// 	_dataStream.readBytes(byte);
-		//	_dataStream.close();
-			
-	//		loader.contentLoaderInfo.addEventListener(Event.COMPLETE, onCompleate);
-			
-		//	loader.load
-			
-		//	loader.loadBytes(byte);
-			/*
-			trace(url.url);
-			loader.contentLoaderInfo.addEventListener(flash.events.Event.COMPLETE, onCompleate);
-			try
-			{
-				loader.load(url);
-				trace(loader.content);
-			}
-			catch(e:Error)
-			{
-				trace(e);
-			}
-			*/
-			
-			/*
-			_titleBar = new Image(Texture.fromEmbeddedAsset(barImage));
-			_titleBar.width = 512;
-			_titleBar.height = 32;
-			_titleBar.addEventListener(TouchEvent.TOUCH, getTilteBarClick);
-			
-			_content = new Content();
-			
-			_miniButtonTexture = Texture.fromEmbeddedAsset(miniImage);
-			_miniButton = new Button(_miniButtonTexture);
-			_miniButton.x = 448;
-			_miniButton.addEventListener(starling.events.Event.TRIGGERED, onMiniTriggerd);
-			_miniButton.visible = true;
-			
-			_revertButtonTexture = Texture.fromEmbeddedAsset(revertImage);
-			_revertButton = new Button(_revertButtonTexture);
-			_revertButton.x = 448;
-			_revertButton.addEventListener(starling.events.Event.TRIGGERED, onRevertTriggerd);
-			_revertButton.scaleY = 0.9;
-			_revertButton.visible = false;
-			
-			_closeButtonTexture = Texture.fromEmbeddedAsset(closeImage);
-			_closeButton = new Button(_closeButtonTexture);
-			_closeButton.x = 480;
-			_closeButton.addEventListener(starling.events.Event.TRIGGERED, onColseTriggerd);
-			
-			addChild(_titleBar);
-			addChild(_miniButton);
-			addChild(_revertButton);
-			addChild(_closeButton);
-			addChild(_content);
-			*/
-			
 			_titleBar = new Image(Texture.fromBitmap(URLloader.titleBarBitmap));
 			_titleBar.width = 512;
 			_titleBar.height = 32;
@@ -134,16 +62,16 @@ package
 			
 			_miniButtonTexture = Texture.fromBitmap(URLloader.miniButtonBitmap);
 			_miniButton = new Button(_miniButtonTexture);
-			_miniButton.width = URLloader.miniButtonBitmap.width;
-			_miniButton.height = URLloader.miniButtonBitmap.height;
+			_miniButton.width = 32;
+			_miniButton.height = 32;
 			_miniButton.x = 448;
 			_miniButton.addEventListener(starling.events.Event.TRIGGERED, onMiniTriggerd);
 			_miniButton.visible = true;
 			
 			_revertButtonTexture = Texture.fromBitmap(URLloader.revertButtonBitmap);
 			_revertButton = new Button(_revertButtonTexture);
-			_revertButton.width = URLloader.revertButtonBitmap.width;
-			_revertButton.height = URLloader.revertButtonBitmap.height;
+			_revertButton.width = 30;
+			_revertButton.height = 35;
 			_revertButton.x = 448;
 			_revertButton.addEventListener(starling.events.Event.TRIGGERED, onRevertTriggerd);
 			_revertButton.scaleY = 0.9;
@@ -151,8 +79,8 @@ package
 			
 			_closeButtonTexture = Texture.fromBitmap(URLloader.closeButtonBitmap);
 			_closeButton = new Button(_closeButtonTexture);
-			_closeButton.width = URLloader.closeButtonBitmap.width;
-			_closeButton.height = URLloader.closeButtonBitmap.height;
+			_closeButton.width = 32;
+			_closeButton.height = 32;
 			_closeButton.x = 480;
 			_closeButton.addEventListener(starling.events.Event.TRIGGERED, onColseTriggerd);
 			
@@ -170,26 +98,40 @@ package
 		 */		
 		private function onColseTriggerd(event:starling.events.Event):void
 		{
-			close();
+			distroy();
+		//	System.gc();
 		}
 		
-		public function close():void
+		public function distroy():void
 		{
+			_revertButtonTexture.dispose();
+			_revertButtonTexture = null;
 			_revertButton.removeEventListener(starling.events.Event.TRIGGERED, onRevertTriggerd);
+			_revertButton.dispose();
+			_revertButton = null;
+			
 			_miniButton.removeEventListener(starling.events.Event.TRIGGERED, onMiniTriggerd);
+			_miniButtonTexture.dispose();
+			_miniButtonTexture = null;
+			_miniButton.dispose();
+			_miniButton = null;
+			
 			_closeButton.removeEventListener(starling.events.Event.TRIGGERED, onColseTriggerd);
+			_closeButtonTexture.dispose();
+			_closeButtonTexture = null;
+			_closeButton.dispose();
+			_closeButton = null;
+			
 			_titleBar.removeEventListener(TouchEvent.TOUCH, getTilteBarClick);
+			_titleBar.dispose();
+			_titleBar = null;
+			
 			_content.removeEventListeners(TouchEvent.TOUCH);
-			//	_content.removeEventListeners(TouchEvent.TOUCH);
-		//	_content.getChildAt(0).removeEventListeners(TouchEvent.TOUCH);
-		//	var par:DisplayObjectContainer = this.parent;
-			//	trace(_content.getChildAt(0).getgetChildAt(0));
-		//	var child:DisplayObjectContainer = _content;
-		//	_content.close();
-		//	var childContent:DisplayObject = child.getChildAt(0);
-		//	trace(childContent);
+			_content.distroy();
+			_content.dispose();
+			_content = null;
 			removeFromParent();
-			//	par.addChild(this);
+		//	this.dispose();
 		}
 		
 		/**

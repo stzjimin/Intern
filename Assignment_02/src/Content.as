@@ -1,5 +1,6 @@
 package
 {
+	import flash.display.DisplayObjectContainer;
 	import flash.geom.Point;
 	
 	import starling.core.Starling;
@@ -15,9 +16,6 @@ package
 	public class Content extends Sprite
 	{
 		/*
-		[Embed(source="GUI_resources\\contents.png")]
-		private static const contentImage:Class;
-		
 		[Embed(source="GUI_resources\\mario.png")]
 		private static const marioImage:Class;
 		
@@ -26,27 +24,17 @@ package
 		*/
 		
 		private var _content:Image;
-		private var _marioMoviClip:MovieClip;
-		private var _background:Sprite;
+//		private var _marioMoviClip:MovieClip;
 		
 		/**
 		 *Content클래스의 생성자 
 		 * Content클래스는 내부의 흰바탕의 이미지와 자식윈도우를 가짐
 		 */		
 		public function Content()
-		{
-			/*
-			_background = new Sprite();
-			addChild(_background);
-			
-			_content = new Image(Texture.fromEmbeddedAsset(contentImage));
-			_background.addEventListener(TouchEvent.TOUCH,onContentClicked);
-			_content.y = 30;
-			*/
-			
+		{	
 			_content = new Image(Texture.fromBitmap(URLloader.contentBitmap));
-			_content.width = URLloader.contentBitmap.width;
-			_content.height = URLloader.contentBitmap.height;
+			_content.width = 512;
+			_content.height = 256;
 			_content.addEventListener(TouchEvent.TOUCH,onContentClicked);
 			_content.y = 30;
 			addChild(_content);
@@ -79,36 +67,22 @@ package
 			{
 				var clickedPos:Point = event.getTouch(_content,TouchPhase.BEGAN).getLocation(parent);
 				var window:Window = new Window();
-				window.name = "window";
 				window.x = clickedPos.x;
 				window.y = clickedPos.y;
 				addChild(window);
+				trace("content 자식 개수 = " + this.numChildren);
 			}
 		}
-		/*
-		private function onContentClicked(event:TouchEvent):void
+	
+		public function distroy():void
 		{
-			if(event.getTouch(_background,TouchPhase.BEGAN))
+			_content.removeEventListener(TouchEvent.TOUCH,onContentClicked);
+			for(var i:int = this.numChildren-1; i > 0; i--)
 			{
-				var clickedPos:Point = event.getTouch(_background,TouchPhase.BEGAN).getLocation(parent);
-				var window:Window = new Window();
-				window.name = "window";
-				window.x = clickedPos.x;
-				window.y = clickedPos.y;
-				addChild(window);
+				trace("close Window " + i);
+			//	Window(this.getChildAt(i)).dispose();
+				Window(this.getChildAt(i)).distroy();
 			}
 		}
-		*/
-		/*
-		public function close():void
-		{
-			var parWindow:Window;
-			trace("content child num = " + this.numChildren);
-			parWindow = this.getChildByName("window") as Window;
-			if(parWindow != null)
-				parWindow.close();
-			trace(parWindow);
-		}
-		*/
 	}
 }
