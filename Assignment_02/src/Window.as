@@ -1,6 +1,5 @@
 package
 {	
-	import flash.display.Bitmap;
 	import flash.filesystem.File;
 	import flash.filesystem.FileStream;
 	import flash.system.System;
@@ -36,7 +35,6 @@ package
 		private var _closeButtonTexture:Texture;
 		private var _dataFile:File;
 		private var _dataStream:FileStream;
-		private var bitmap:Bitmap;
 
 		/**
 		 * Window클래스의 생성자 

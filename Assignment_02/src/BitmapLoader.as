@@ -19,9 +19,9 @@ package
 		private var _revertButtonLoader:Loader = new Loader();
 		private var _contentLoader:Loader = new Loader();
 		
-		private var completeFunc:Function;	//비트맵의 로딩이 완료될 경우 호출될 함수
-		private var progressFunc:Function;	//비트맵들 중 하나라도 로드가 완료되면 호출되는 함수
-		private var completeCounter:int;
+		private var _completeFunc:Function;	//비트맵의 로딩이 완료될 경우 호출될 함수
+		private var _progressFunc:Function;	//비트맵들 중 하나라도 로드가 완료되면 호출되는 함수
+		private var _completeCounter:int;
 		
 		public function BitmapLoader(progFunc:Function, compFunc:Function)
 		{
@@ -31,9 +31,9 @@ package
 			var revertButtonURL:URLRequest = new URLRequest("https://raw.githubusercontent.com/stzjimin/JiMin/master/Assignment_02/src/GUI_resources/revert.png");
 			var contentURL:URLRequest = new URLRequest("https://raw.githubusercontent.com/stzjimin/JiMin/master/Assignment_02/src/GUI_resources/contents.png");
 			
-			completeCounter = 0;
-			completeFunc = compFunc;
-			progressFunc = progFunc;
+			_completeCounter = 0;
+			_completeFunc = compFunc;
+			_progressFunc = progFunc;
 			
 			/*
 			var titleBarURL:URLRequest = new URLRequest("GUI_resources/titleBar.png");
@@ -127,12 +127,12 @@ package
 		 */		
 		private function checkLoadingComplete():void
 		{
-			completeCounter++;
-			progressFunc(completeCounter);
-			if(completeCounter >= 5)
+			_completeCounter++;
+			_progressFunc(_completeCounter);
+			if(_completeCounter >= 5)
 			{
 				trace("load completed");
-				completeFunc();
+				_completeFunc();
 			}
 		}
 	}
