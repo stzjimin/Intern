@@ -13,12 +13,6 @@ package
 		private static var _revertButtonBitmap:Bitmap = new Bitmap();
 		private static var _contentBitmap:Bitmap = new Bitmap();
 		
-		private var _titleBarLoader:Loader = new Loader();
-		private var _closeButtonLoader:Loader = new Loader();
-		private var _miniButtonLoader:Loader = new Loader();
-		private var _revertButtonLoader:Loader = new Loader();
-		private var _contentLoader:Loader = new Loader();
-		
 		private var _completeFunc:Function;	//비트맵의 로딩이 완료될 경우 호출될 함수
 		private var _progressFunc:Function;	//비트맵들 중 하나라도 로드가 완료되면 호출되는 함수
 		private var _completeCounter:int;
@@ -30,6 +24,12 @@ package
 			var miniButtonURL:URLRequest = new URLRequest("https://raw.githubusercontent.com/stzjimin/JiMin/master/Assignment_02/src/GUI_resources/minimize.png");
 			var revertButtonURL:URLRequest = new URLRequest("https://raw.githubusercontent.com/stzjimin/JiMin/master/Assignment_02/src/GUI_resources/revert.png");
 			var contentURL:URLRequest = new URLRequest("https://raw.githubusercontent.com/stzjimin/JiMin/master/Assignment_02/src/GUI_resources/contents.png");
+			
+			var _titleBarLoader:Loader = new Loader();
+			var _closeButtonLoader:Loader = new Loader();
+			var _miniButtonLoader:Loader = new Loader();
+			var _revertButtonLoader:Loader = new Loader();
+			var _contentLoader:Loader = new Loader();
 			
 			_completeCounter = 0;
 			_completeFunc = compFunc;
@@ -89,35 +89,35 @@ package
 		private function titleBarCompleate(event:Event):void
 		{
 			_titleBarBitmap = event.currentTarget.loader.content as Bitmap;
-			_titleBarLoader.contentLoaderInfo.removeEventListener(Event.COMPLETE, titleBarCompleate);
+			event.currentTarget.removeEventListener(Event.COMPLETE, titleBarCompleate);
 			checkLoadingComplete();
 		}
 		
 		private function closeButtonCompleate(event:Event):void
 		{
 			_closeButtonBitmap = event.currentTarget.loader.content as Bitmap;
-			_closeButtonLoader.contentLoaderInfo.removeEventListener(Event.COMPLETE, titleBarCompleate);
+			event.currentTarget.removeEventListener(Event.COMPLETE, closeButtonCompleate);
 			checkLoadingComplete();
 		}
 		
 		private function miniButtonCompleate(event:Event):void
 		{
 			_miniButtonBitmap = event.currentTarget.loader.content as Bitmap;
-			_miniButtonLoader.contentLoaderInfo.removeEventListener(Event.COMPLETE, titleBarCompleate);
+			event.currentTarget.removeEventListener(Event.COMPLETE, miniButtonCompleate);
 			checkLoadingComplete();
 		}
 		
 		private function revertButtonCompleate(event:Event):void
 		{
 			_revertButtonBitmap = event.currentTarget.loader.content as Bitmap;
-			_revertButtonLoader.contentLoaderInfo.removeEventListener(Event.COMPLETE, titleBarCompleate);
+			event.currentTarget.removeEventListener(Event.COMPLETE, revertButtonCompleate);
 			checkLoadingComplete();
 		}
 		
 		private function contentCompleate(event:Event):void
 		{
 			_contentBitmap = event.currentTarget.loader.content as Bitmap;
-			_contentLoader.contentLoaderInfo.removeEventListener(Event.COMPLETE, titleBarCompleate);
+			event.currentTarget.removeEventListener(Event.COMPLETE, contentCompleate);
 			checkLoadingComplete();
 		}
 		
